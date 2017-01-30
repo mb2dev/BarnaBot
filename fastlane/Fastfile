@@ -1,0 +1,11 @@
+lane :bonjour do
+
+  UI.success "Bravo !"
+
+  scan(
+    project: "Barnabot.xcodeproj",
+    code_coverage: true
+  )
+  xcov
+
+end

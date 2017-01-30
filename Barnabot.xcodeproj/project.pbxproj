@@ -8,12 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		CAB4B6591E40021A001A67F3 /* Barnabot.h in Headers */ = {isa = PBXBuildFile; fileRef = CAB4B6571E40021A001A67F3 /* Barnabot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CAB4B6681E400377001A67F3 /* Barnabot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB4B6541E40021A001A67F3 /* Barnabot.framework */; };
+		CAB4B6711E4004C1001A67F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4B6701E4004C1001A67F3 /* User.swift */; };
+		CAB4B6721E400617001A67F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4B6701E4004C1001A67F3 /* User.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CAB4B6691E400377001A67F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAB4B64B1E40021A001A67F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAB4B6531E40021A001A67F3;
+			remoteInfo = Barnabot;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CAB4B6541E40021A001A67F3 /* Barnabot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barnabot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB4B6571E40021A001A67F3 /* Barnabot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Barnabot.h; sourceTree = "<group>"; };
 		CAB4B6581E40021A001A67F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAB4B6631E400377001A67F3 /* BarnabotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarnabotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAB4B6651E400377001A67F3 /* BarnabotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarnabotTests.swift; sourceTree = "<group>"; };
+		CAB4B6671E400377001A67F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAB4B66E1E4004AC001A67F3 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		CAB4B6701E4004C1001A67F3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +42,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CAB4B6601E400377001A67F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAB4B6681E400377001A67F3 /* Barnabot.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -31,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				CAB4B6561E40021A001A67F3 /* Barnabot */,
+				CAB4B6641E400377001A67F3 /* BarnabotTests */,
 				CAB4B6551E40021A001A67F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -39,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				CAB4B6541E40021A001A67F3 /* Barnabot.framework */,
+				CAB4B6631E400377001A67F3 /* BarnabotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -46,10 +74,21 @@
 		CAB4B6561E40021A001A67F3 /* Barnabot */ = {
 			isa = PBXGroup;
 			children = (
+				CAB4B6701E4004C1001A67F3 /* User.swift */,
 				CAB4B6571E40021A001A67F3 /* Barnabot.h */,
 				CAB4B6581E40021A001A67F3 /* Info.plist */,
 			);
 			path = Barnabot;
+			sourceTree = "<group>";
+		};
+		CAB4B6641E400377001A67F3 /* BarnabotTests */ = {
+			isa = PBXGroup;
+			children = (
+				CAB4B66E1E4004AC001A67F3 /* UserTests.swift */,
+				CAB4B6651E400377001A67F3 /* BarnabotTests.swift */,
+				CAB4B6671E400377001A67F3 /* Info.plist */,
+			);
+			path = BarnabotTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,16 +123,40 @@
 			productReference = CAB4B6541E40021A001A67F3 /* Barnabot.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		CAB4B6621E400377001A67F3 /* BarnabotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAB4B66B1E400377001A67F3 /* Build configuration list for PBXNativeTarget "BarnabotTests" */;
+			buildPhases = (
+				CAB4B65F1E400377001A67F3 /* Sources */,
+				CAB4B6601E400377001A67F3 /* Frameworks */,
+				CAB4B6611E400377001A67F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAB4B66A1E400377001A67F3 /* PBXTargetDependency */,
+			);
+			name = BarnabotTests;
+			productName = BarnabotTests;
+			productReference = CAB4B6631E400377001A67F3 /* BarnabotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		CAB4B64B1E40021A001A67F3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Mickael Bordage";
 				TargetAttributes = {
 					CAB4B6531E40021A001A67F3 = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+					CAB4B6621E400377001A67F3 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 					};
@@ -112,12 +175,20 @@
 			projectRoot = "";
 			targets = (
 				CAB4B6531E40021A001A67F3 /* Barnabot */,
+				CAB4B6621E400377001A67F3 /* BarnabotTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CAB4B6521E40021A001A67F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAB4B6611E400377001A67F3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -131,10 +202,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAB4B6711E4004C1001A67F3 /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAB4B65F1E400377001A67F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAB4B6721E400617001A67F3 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CAB4B66A1E400377001A67F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAB4B6531E40021A001A67F3 /* Barnabot */;
+			targetProxy = CAB4B6691E400377001A67F3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CAB4B65A1E40021A001A67F3 /* Debug */ = {
@@ -239,6 +327,27 @@
 		CAB4B65D1E40021A001A67F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Barnabot/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = esgi.Barnabot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CAB4B65E1E40021A001A67F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -252,22 +361,30 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
-			name = Debug;
+			name = Release;
 		};
-		CAB4B65E1E40021A001A67F3 /* Release */ = {
+		CAB4B66C1E400377001A67F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Barnabot/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = BarnabotTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = esgi.Barnabot;
+				PRODUCT_BUNDLE_IDENTIFIER = esgi.BarnabotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CAB4B66D1E400377001A67F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = BarnabotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = esgi.BarnabotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -289,6 +406,14 @@
 			buildConfigurations = (
 				CAB4B65D1E40021A001A67F3 /* Debug */,
 				CAB4B65E1E40021A001A67F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CAB4B66B1E400377001A67F3 /* Build configuration list for PBXNativeTarget "BarnabotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAB4B66C1E400377001A67F3 /* Debug */,
+				CAB4B66D1E400377001A67F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
