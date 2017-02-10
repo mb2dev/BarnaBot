@@ -96,7 +96,11 @@ class BBSession {
         // TODO analyser le message pour détecter une "Intent"
         // TODO envoyer à LUIS / recast.ai
         print("received msg : \(msg)")
-        
+        var find = matches(text: msg)
+        if find.count > 0{
+           find = find.sorted { $0.priority > $1.priority }
+            beginDialog(path: (find.first?.idDialog)!)
+        }
         waiting_for_uinput = false
         self.result = msg
         self.resume()
@@ -105,5 +109,24 @@ class BBSession {
     private func resume() -> Void {
         print("resuming")
         dialogStack.last()?.next(self, nil)
+    }
+    
+    func matches(text: String) -> [BBIntentDialog] {
+        var result:[BBIntentDialog] = [BBIntentDialog]()
+        for(key,value) in (botBuilder?.intents)!{
+        do {
+            let regex = try NSRegularExpression(pattern: key)
+            let nsString = text as NSString
+            let results = regex.matches(in: text, range: NSRange(location: 0, length: nsString.length))
+            //return results.map { nsString.substring(with: $0.range)}
+            if (results.map { nsString.substring(with: $0.range)}).count > 0{
+                result.append(value)
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return result
+        }
+        }
+        return result
     }
 }

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA70C9C21E4E62C40034BBD3 /* BBBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BB1E4E62C40034BBD3 /* BBBuilder.swift */; };
+		CA70C9C31E4E62C40034BBD3 /* BBDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BC1E4E62C40034BBD3 /* BBDialog.swift */; };
+		CA70C9C41E4E62C40034BBD3 /* BBIntentDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BD1E4E62C40034BBD3 /* BBIntentDialog.swift */; };
+		CA70C9C51E4E62C40034BBD3 /* BBNext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BE1E4E62C40034BBD3 /* BBNext.swift */; };
+		CA70C9C61E4E62C40034BBD3 /* BBSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BF1E4E62C40034BBD3 /* BBSession.swift */; };
+		CA70C9C71E4E62C40034BBD3 /* BBSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9C01E4E62C40034BBD3 /* BBSessionDelegate.swift */; };
+		CA70C9C81E4E62C40034BBD3 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9C11E4E62C40034BBD3 /* Stack.swift */; };
 		CAB4B6591E40021A001A67F3 /* Barnabot.h in Headers */ = {isa = PBXBuildFile; fileRef = CAB4B6571E40021A001A67F3 /* Barnabot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAB4B6681E400377001A67F3 /* Barnabot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB4B6541E40021A001A67F3 /* Barnabot.framework */; };
 		CAB4B6711E4004C1001A67F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4B6701E4004C1001A67F3 /* User.swift */; };
@@ -24,6 +31,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA70C9BB1E4E62C40034BBD3 /* BBBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBBuilder.swift; sourceTree = "<group>"; };
+		CA70C9BC1E4E62C40034BBD3 /* BBDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBDialog.swift; sourceTree = "<group>"; };
+		CA70C9BD1E4E62C40034BBD3 /* BBIntentDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBIntentDialog.swift; sourceTree = "<group>"; };
+		CA70C9BE1E4E62C40034BBD3 /* BBNext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBNext.swift; sourceTree = "<group>"; };
+		CA70C9BF1E4E62C40034BBD3 /* BBSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBSession.swift; sourceTree = "<group>"; };
+		CA70C9C01E4E62C40034BBD3 /* BBSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBSessionDelegate.swift; sourceTree = "<group>"; };
+		CA70C9C11E4E62C40034BBD3 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		CAB4B6541E40021A001A67F3 /* Barnabot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barnabot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB4B6571E40021A001A67F3 /* Barnabot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Barnabot.h; sourceTree = "<group>"; };
 		CAB4B6581E40021A001A67F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,6 +88,13 @@
 		CAB4B6561E40021A001A67F3 /* Barnabot */ = {
 			isa = PBXGroup;
 			children = (
+				CA70C9BB1E4E62C40034BBD3 /* BBBuilder.swift */,
+				CA70C9BC1E4E62C40034BBD3 /* BBDialog.swift */,
+				CA70C9BD1E4E62C40034BBD3 /* BBIntentDialog.swift */,
+				CA70C9BE1E4E62C40034BBD3 /* BBNext.swift */,
+				CA70C9BF1E4E62C40034BBD3 /* BBSession.swift */,
+				CA70C9C01E4E62C40034BBD3 /* BBSessionDelegate.swift */,
+				CA70C9C11E4E62C40034BBD3 /* Stack.swift */,
 				CAB4B6701E4004C1001A67F3 /* User.swift */,
 				CAB4B6571E40021A001A67F3 /* Barnabot.h */,
 				CAB4B6581E40021A001A67F3 /* Info.plist */,
@@ -203,6 +224,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAB4B6711E4004C1001A67F3 /* User.swift in Sources */,
+				CA70C9C51E4E62C40034BBD3 /* BBNext.swift in Sources */,
+				CA70C9C61E4E62C40034BBD3 /* BBSession.swift in Sources */,
+				CA70C9C41E4E62C40034BBD3 /* BBIntentDialog.swift in Sources */,
+				CA70C9C81E4E62C40034BBD3 /* Stack.swift in Sources */,
+				CA70C9C71E4E62C40034BBD3 /* BBSessionDelegate.swift in Sources */,
+				CA70C9C31E4E62C40034BBD3 /* BBDialog.swift in Sources */,
+				CA70C9C21E4E62C40034BBD3 /* BBBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +438,7 @@
 				CAB4B65E1E40021A001A67F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CAB4B66B1E400377001A67F3 /* Build configuration list for PBXNativeTarget "BarnabotTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +447,7 @@
 				CAB4B66D1E400377001A67F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
