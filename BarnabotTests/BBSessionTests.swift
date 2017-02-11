@@ -94,6 +94,23 @@ class BBSessionTests: XCTestCase {
         XCTAssert(botSession.dialogStack.count == 0)
     }
     
+    func testWriting(){
+        let botSession = BBSession.newInstance()
+        let botBuilder : BBBuilder = BBBuilder("Barnabot")
+        botBuilder
+            .dialog(path: "/foo", [{(session : BBSession, next : BBDialog?) -> Void in
+                session.send("bar")
+                }])
+        
+        // botSession.human_feeling is set to false in the GVBBSessionDelegate constructor
+        let delegate  = GVBBSessionDelegate(botSession, botBuilder, human_feeling: true)
+        botSession.beginDialog(path: "/foo")
+        
+        // human_feeling = true => a delay is applied
+        XCTAssertEqual(delegate.last_msg, "")
+        XCTAssert(delegate.writes)
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

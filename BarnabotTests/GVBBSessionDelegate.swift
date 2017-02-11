@@ -14,16 +14,28 @@ class GVBBSessionDelegate : BBSessionDelegate {
     var botSession : BBSession
     var botBuilder : BBBuilder
     var last_msg : String = String()
+    var writes : Bool = false
     
-    init(_ session : BBSession, _ builder : BBBuilder){
+    
+    convenience init(_ session : BBSession, _ builder : BBBuilder){
+        self.init(session, builder, human_feeling : false)
+    }
+    
+    init(_ session : BBSession, _ builder : BBBuilder, human_feeling : Bool){
         botSession = session
-        botSession.human_feeling = false
+        botSession.human_feeling = human_feeling
         botBuilder = builder
         session.delegate = self
     }
+
     
     func send(_ msg: String) {
+        writes = false
         print(msg)
         last_msg = msg
+    }
+    
+    func writing(){
+        writes = true
     }
 }
