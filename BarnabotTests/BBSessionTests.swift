@@ -7,6 +7,12 @@
 //
 
 import XCTest
+
+/**
+a unit test target can access any internal entity,
+if you mark the import declaration for a product module with the @testable attribute
+and compile that product module with testing enabled
+ */
 @testable import Barnabot
 
 class BBSessionTests: XCTestCase {
@@ -64,6 +70,28 @@ class BBSessionTests: XCTestCase {
         
         XCTAssert(botSession.dialogStack.count == 1)
         XCTAssertEqual(delegate.last_msg, "bar")
+    }
+    
+    func testResume(){
+        let botSession = BBSession.newInstance()
+        let botBuilder : BBBuilder = BBBuilder("Barnabot")
+        botBuilder
+            .dialog(path: "/foo", [{(session : BBSession, next : BBDialog?) -> Void in
+                session.send("bar")
+                }])
+        
+        // botSession.human_feeling is set to false in the GVBBSessionDelegate constructor
+        let delegate  = GVBBSessionDelegate(botSession, botBuilder)
+        botSession
+            .resume()
+            .resume()
+        
+        botSession
+            .beginDialog(path: "/foo")
+            .resume()
+            .resume()
+        
+        XCTAssert(botSession.dialogStack.count == 0)
     }
     
     func testPerformanceExample() {

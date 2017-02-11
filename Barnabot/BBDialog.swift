@@ -12,33 +12,45 @@ import Foundation
 class BBDialog : Equatable {
     
     private let id : UUID
+    var waterfall : [BBNext]
+    private var counter : Int = 0
+    
+    var count : Int
+    // Pour pouvoir faire des comparaisons entre plusieurs instances de BBDialog
     let path : String
-    var next : BBNext {
+    var next : BBNext? {
         get {
             print("next getter with counter = \(counter)")
             let c = counter
             counter += 1
-            return waterfall[c]
+            return c+1 > count ? nil : waterfall[c]
         }
     }
     var beginDialog : BBNext {
         get {
             print("beginDialog getter with counter = \(counter)")
             counter = 0;
-            return self.next
+            return self.next!
         }
     }
-    var waterfall : [BBNext]
-    private var counter : Int = 0
+    
+    func resume(_ session : BBSession,_ nextDialog : BBDialog?){
+        if let next = self.next {
+            next(session, nextDialog)
+        }
+    }
     
     convenience init(_ path : String, action : @escaping BBNext) {
         self.init(path, waterfall: [BBNext]())
         self.waterfall.append(action);
+        self.count = 1
     }
     
     init(_ path : String, waterfall : [BBNext]){
+        // should force waterfall to have at least one element
         self.path = path
         self.waterfall = waterfall
+        self.count = waterfall.count
         self.id = UUID()
     }
 
@@ -50,7 +62,8 @@ class BBDialog : Equatable {
     }
     
     static func == (lhs: BBDialog, rhs: BBDialog) -> Bool {
-        return lhs.id == rhs.id
+        print("BBDialog comparison")
+        return lhs.path == rhs.path
     }
     
     func copy() -> BBDialog {

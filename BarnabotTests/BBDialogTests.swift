@@ -22,15 +22,17 @@ class BBDialogTests: XCTestCase {
     }
     
     func testComparison() {
-        
-        let dialog1 = BBDialog("/", action: {(session : BBSession, next : BBDialog?) -> Void in
+        let dialog1 = BBDialog("/", action: {
+            (session : BBSession, next : BBDialog?) -> Void in
         })
         
-        let dialog2 = dialog1
+        let dialog2 = dialog1.copy()
         
-        let dialog3 = BBDialog("/", action: {(session : BBSession, next : BBDialog?) -> Void in
-        
+        let dialog3 = BBDialog("/foo", action: {
+            (session : BBSession, next : BBDialog?) -> Void in
         })
+        
+        // comparison is done on "path"
         XCTAssert(dialog1 == dialog2)
         XCTAssert(dialog1 != dialog3)
     }

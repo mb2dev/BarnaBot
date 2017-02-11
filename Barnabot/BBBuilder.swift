@@ -31,10 +31,12 @@ class BBBuilder {
     
     /************************* String as Regex *******************************/
     
+    // with redir
     func matches(regex:String, redir:String, priority:Int) ->BBBuilder{
         return matches(regex: stringToRegex(regex), redir: redir, priority: priority)
     }
     
+    // with waterfall
     func matches(regex:String, priority:Int, _ waterfall : [BBNext]) ->BBBuilder{
         return matches(regex: stringToRegex(regex), priority: priority, waterfall)
     }
@@ -51,14 +53,13 @@ class BBBuilder {
     
     /************************* Regex as Regex *******************************/
     
+    // with redir
     func matches(regex:NSRegularExpression, redir:String, priority:Int) ->BBBuilder{
-        let waterfall : [BBNext] = [{(session : BBSession, next : BBDialog?) -> Void in
-            session.beginDialog(path: redir)
-        }]
-        intents.updateValue(BBIntentDialog(regex, waterfall: waterfall, priority: priority), forKey: regex)
+        intents.updateValue(BBIntentDialog(regex, redir: redir, priority: priority), forKey: regex)
         return self
     }
     
+    // with waterfall
     func matches(regex:NSRegularExpression, priority:Int, _ waterfall : [BBNext]) ->BBBuilder{
         intents.updateValue(BBIntentDialog(regex, waterfall: waterfall, priority: priority), forKey: regex)
         return self

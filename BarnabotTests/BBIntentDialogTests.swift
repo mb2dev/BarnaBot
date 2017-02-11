@@ -21,9 +21,29 @@ class BBIntentDialogTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testComparison() {
+        do{
+            let regex1 = try NSRegularExpression.init(pattern: "^hello")
+            let dialog1 = BBIntentDialog(regex1, action: {
+                (session : BBSession, next : BBDialog?) -> Void in
+            }, priority: 0)
+        
+            let regex2 = try NSRegularExpression.init(pattern: "^hello")
+            let dialog2 = dialog1.copy()
+        
+            let regex3 = try NSRegularExpression.init(pattern: "^help")
+            let dialog3 = BBIntentDialog(regex3, action: {
+                (session : BBSession, next : BBDialog?) -> Void in
+            }, priority: 0)
+            
+            // comparison is done on "path"
+            XCTAssert(regex1 == regex2)
+            XCTAssert(dialog1 == dialog2)
+            XCTAssert(dialog1 != dialog3)
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+        }
+
     }
     
     func testPerformanceExample() {

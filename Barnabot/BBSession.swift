@@ -64,7 +64,7 @@ class BBSession {
      */
     private func beginDialog(_ dialog: BBDialog) -> BBSession {
         print("private beginDialog")
-        _dialogStack.push(dialog)
+        _dialogStack.push(dialog.copy())
         dialog.beginDialog(self, nil)
         return self
     }
@@ -98,16 +98,24 @@ class BBSession {
     */
     func endDialog() -> BBSession {
         _dialogStack.pop()
-        self.resume()
-        return self
+        return self.resume()
     }
     
     /**
      Invokes the next step of the dialog at the top of the stack
+     
+     Should be private
      */
-    private func resume() -> Void {
+    func resume() -> BBSession {
         print("resuming")
-        _dialogStack.last?.next(self, nil)
+        if let dialog = _dialogStack.last {
+            if let next = dialog.next {
+                next(self, nil)
+            } else {
+                self.endDialog()
+            }
+        }
+        return self
     }
     
     /**
@@ -229,12 +237,12 @@ class BBSession {
     */
     private func matches(text: String) -> [BBIntentDialog] {
         var result:[BBIntentDialog] = [BBIntentDialog]()
-        for(regex,value) in (delegate?.botBuilder.intents)!{
+        for(regex,intentDialog) in (delegate?.botBuilder.intents)!{
             let nsString = text as NSString
             let results = regex.matches(in: text, range: NSRange(location: 0, length: nsString.length))
             //return results.map { nsString.substring(with: $0.range)}
             if (results.map { nsString.substring(with: $0.range)}).count > 0{
-                result.append(value)
+                result.append(intentDialog)
             }
         }
         return result
