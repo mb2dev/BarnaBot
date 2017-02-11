@@ -19,7 +19,6 @@ class BBSession {
     var conversationData : [String: Any] = [String: Any]()
     
     var dialogStack : Stack<BBDialog> = Stack<BBDialog>()
-    var botBuilder : BBBuilder?
     var delegate : BBSessionDelegate?
     
     var result : String = String()
@@ -29,7 +28,7 @@ class BBSession {
     
     func beginConversation() -> Void {
         print("beginConversation")
-        if let dialog : BBDialog = botBuilder?.dialogs["/"] {
+        if let dialog : BBDialog = delegate?.botBuilder.dialogs["/"] {
             dialogStack.push(dialog)
             dialog.beginDialog(self, nil)
         } else {
@@ -41,7 +40,7 @@ class BBSession {
     func beginDialog(path : String) -> Void {
         // TODO check waitin_for_uinput
         
-        if let dialog : BBDialog = botBuilder?.dialogs[path] {
+        if let dialog : BBDialog = delegate?.botBuilder.dialogs[path] {
             dialogStack.push(dialog)
             dialog.beginDialog(self, nil)
         }
@@ -116,7 +115,7 @@ class BBSession {
     
     func matches(text: String) -> [BBIntentDialog] {
         var result:[BBIntentDialog] = [BBIntentDialog]()
-        for(regex,value) in (botBuilder?.intents)!{
+        for(regex,value) in (delegate?.botBuilder.intents)!{
             let nsString = text as NSString
             let results = regex.matches(in: text, range: NSRange(location: 0, length: nsString.length))
             //return results.map { nsString.substring(with: $0.range)}

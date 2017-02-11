@@ -9,6 +9,7 @@
 import Foundation
 
 protocol BBSessionDelegate {
+    var botSession : BBSession { get set }
+    var botBuilder : BBBuilder { get set }
     func send(_ msg : String) -> Void
-    func receive(_ msg : String) -> Void
 }
