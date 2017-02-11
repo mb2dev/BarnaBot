@@ -25,7 +25,7 @@ class BBBuilder {
     }
     
     func dialog(path : String, _ waterfall : [BBNext]) -> BBBuilder {
-        dialogs.updateValue(BBDialog(waterfall:  waterfall), forKey: path)
+        dialogs.updateValue(BBDialog(path, waterfall:  waterfall), forKey: path)
         return self
     }
     
@@ -55,12 +55,12 @@ class BBBuilder {
         let waterfall : [BBNext] = [{(session : BBSession, next : BBDialog?) -> Void in
             session.beginDialog(path: redir)
         }]
-        intents.updateValue(BBIntentDialog(waterfall: waterfall, priority: priority), forKey: regex)
+        intents.updateValue(BBIntentDialog(regex, waterfall: waterfall, priority: priority), forKey: regex)
         return self
     }
     
     func matches(regex:NSRegularExpression, priority:Int, _ waterfall : [BBNext]) ->BBBuilder{
-        intents.updateValue(BBIntentDialog(waterfall: waterfall, priority: priority), forKey: regex)
+        intents.updateValue(BBIntentDialog(regex, waterfall: waterfall, priority: priority), forKey: regex)
         return self
     }
     

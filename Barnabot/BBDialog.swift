@@ -10,6 +10,8 @@ import Foundation
 
 class BBDialog : NSObject {
     
+    let id : UUID
+    let path : String
     var next : BBNext {
         get {
             print("next getter with counter = \(counter)")
@@ -28,13 +30,15 @@ class BBDialog : NSObject {
     var waterfall : [BBNext]
     private var counter : Int = 0
     
-    init(action : @escaping BBNext) {
-        self.waterfall = [BBNext]()
+    convenience init(_ path : String, action : @escaping BBNext) {
+        self.init(path, waterfall: [BBNext]())
         self.waterfall[0] = action;
     }
     
-    init(waterfall : [BBNext]){
+    init(_ path : String, waterfall : [BBNext]){
+        self.path = path
         self.waterfall = waterfall
+        self.id = UUID()
     }
 
     override public var description: String{

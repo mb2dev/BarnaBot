@@ -10,16 +10,17 @@ import Foundation
 
  class BBIntentDialog : BBDialog {
     
-    public var priority:Int
+    var priority:Int
+    let regex : NSRegularExpression
     
-    init(priority:Int){
-        self.priority = priority
-        super.init(waterfall: [])
+    convenience init(_ regex : NSRegularExpression, priority:Int){
+        self.init(regex, waterfall : [], priority: priority)
     }
     
-    init(waterfall: [BBNext], priority:Int){
+    init(_ regex : NSRegularExpression, waterfall: [BBNext], priority:Int){
         self.priority = priority
-        super.init(waterfall: waterfall)
+        self.regex = regex
+        super.init("/intent", waterfall: waterfall)
     }
     
     override public var description: String{
