@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Barnabot
 
 class BBDialogTests: XCTestCase {
     
@@ -20,9 +21,18 @@ class BBDialogTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testComparison() {
+        
+        let dialog1 = BBDialog("/", action: {(session : BBSession, next : BBDialog?) -> Void in
+        })
+        
+        let dialog2 = dialog1
+        
+        let dialog3 = BBDialog("/", action: {(session : BBSession, next : BBDialog?) -> Void in
+        
+        })
+        XCTAssert(dialog1 == dialog2)
+        XCTAssert(dialog1 != dialog3)
     }
     
     func testPerformanceExample() {

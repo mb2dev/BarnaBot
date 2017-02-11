@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Barnabot
 
 class StackTests: XCTestCase {
     

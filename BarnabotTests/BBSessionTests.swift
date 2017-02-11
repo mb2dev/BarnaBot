@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Barnabot
 
 class BBSessionTests: XCTestCase {
     
@@ -22,6 +23,47 @@ class BBSessionTests: XCTestCase {
     
     func testBeginConversation() {
         
+        let botSession = BBSession.newInstance()
+        
+        // does not crash
+        botSession.beginConversation()
+        XCTAssert(botSession.dialogStack.count == 0)
+        
+        /*******************************************************/
+        
+        let botBuilder : BBBuilder = BBBuilder("Barnabot")
+        botBuilder
+            .dialog(path: "/", [{(session : BBSession, next : BBDialog?) -> Void in
+                session.send("foo")
+            }])
+        
+        GVBBSessionDelegate(botSession, botBuilder)
+        botSession.beginConversation()
+        
+        XCTAssert(botSession.dialogStack.count == 1)
+        
+        /*********************************************************/
+        
+        //Subsequent calls does nothing
+        botSession.beginConversation()
+        XCTAssert(botSession.dialogStack.count == 1)
+        
+    }//testBeginConversation
+    
+    func testBeginDialog(){
+        let botSession = BBSession.newInstance()
+        let botBuilder : BBBuilder = BBBuilder("Barnabot")
+        botBuilder
+            .dialog(path: "/foo", [{(session : BBSession, next : BBDialog?) -> Void in
+                session.send("bar")
+            }])
+        
+        // botSession.human_feeling is set to false in the GVBBSessionDelegate constructor
+        let delegate  = GVBBSessionDelegate(botSession, botBuilder)
+        botSession.beginDialog(path: "/foo")
+        
+        XCTAssert(botSession.dialogStack.count == 1)
+        XCTAssertEqual(delegate.last_msg, "bar")
     }
     
     func testPerformanceExample() {

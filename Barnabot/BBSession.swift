@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BBSession : NSObject {
+class BBSession {
     
     static let sharedInstance : BBSession = BBSession()
     static let identifier : String = "BBSession_"
@@ -16,47 +16,69 @@ class BBSession : NSObject {
         return BBSession()
     }
     
+    var human_feeling : Bool = true
     var userData : [String: Any] = [String: Any]()
     var delegate : BBSessionDelegate?
     
-    private var dialogStack : Stack<BBDialog> = Stack<BBDialog>()
+    private var _dialogStack : Stack<BBDialog> = Stack<BBDialog>()
+    public var dialogStack : Stack<BBDialog> {
+        get {
+            var stack = Stack<BBDialog>()
+            stack.items = _dialogStack.items.map { $0.copy() }
+            return stack
+        }
+    }
+    var inConversation : Bool {
+        get {
+            return _dialogStack.count > 0
+        }
+    }
     private var result : String = String()
     private var waiting_for_uinput : Bool = false
     
-    private override init() {}
+    private init() {}
     
     /**
         Entry point to start interacting with the user.
      
         Invokes by default the dialog registered at the path **"/"**.
     */
-    func beginConversation() -> Void {
+    func beginConversation() -> BBSession {
         print("beginConversation")
-        self.beginDialog(path: "/")
+        return inConversation ? self : beginDialog(path: "/")
     }
     
     /**
         Starts the dialog registered at the path and push it on the top of the dialog stack
      */
-    func beginDialog(path : String) -> Void {
+    func beginDialog(path : String) -> BBSession {
         // TODO check waitin_for_uinput
         if let dialog : BBDialog = delegate?.botBuilder.dialogs[path] {
-            self.beginDialog(dialog)
+            self.safeBegin(dialog)
         }
+        return self
     }
     
     /**
         Starts a dialog and push it on the top of the dialog stack
      */
-    private func beginDialog(_ dialog: BBDialog) -> Void {
-        dialogStack.push(dialog)
+    private func beginDialog(_ dialog: BBDialog) -> BBSession {
+        print("private beginDialog")
+        _dialogStack.push(dialog)
         dialog.beginDialog(self, nil)
+        return self
+    }
+    
+    func safeBegin(_ dialog : BBDialog){
+        if(dialog != dialogStack.last){
+            self.beginDialog(dialog)
+        }
     }
     
     /**
         Persists the user data dictionary
     */
-    private func saveUserData() -> Void {
+    private func saveUserData() -> BBSession {
         let defaults = UserDefaults.standard
         
         for (key, value) in userData {
@@ -64,6 +86,7 @@ class BBSession : NSObject {
         }
         
         defaults.synchronize()
+        return self
     }
     
     /**
@@ -73,9 +96,18 @@ class BBSession : NSObject {
      
         Call for the previous registered dialog.
     */
-    func endDialog() -> Void {
-        dialogStack.pop()
+    func endDialog() -> BBSession {
+        _dialogStack.pop()
         self.resume()
+        return self
+    }
+    
+    /**
+     Invokes the next step of the dialog at the top of the stack
+     */
+    private func resume() -> Void {
+        print("resuming")
+        _dialogStack.last?.next(self, nil)
     }
     
     /**
@@ -103,17 +135,20 @@ class BBSession : NSObject {
         Gives a human feeling by applying a delay before sending a message
      */
     func send(_ msg : String) -> Void {
-        let delay : NSNumber = NSNumber.init(value: generateRandomNumber(min: 500, max: 3000) / 1000)
-        let interval : TimeInterval = TimeInterval.init(delay)
-        Timer.init(timeInterval: interval, target: self, selector: #selector(timerSend), userInfo: msg, repeats: false)
-//        if let deleg = delegate {
-//            deleg.send(msg)
-//        } else {
-//            print("BBSession has no delegate")
-//        }
+        if(self.human_feeling){
+            let delay : NSNumber = NSNumber.init(value: generateRandomNumber(min: 500, max: 3000) / 1000)
+            let interval : TimeInterval = TimeInterval.init(delay)
+            Timer.init(timeInterval: interval, target: self, selector: #selector(timerSend), userInfo: msg, repeats: false)
+        }else{
+            if let deleg = delegate {
+                deleg.send(msg)
+            } else {
+                print("BBSession has no delegate")
+            }
+        }
     }
     
-    func timerSend(timer : Timer) -> Void {
+    @objc func timerSend(timer : Timer) -> Void {
         
         if let deleg = delegate {
             if let msg = timer.userInfo {
@@ -179,22 +214,12 @@ class BBSession : NSObject {
         if found.count > 0 {
             found = found.sorted { $0.priority > $1.priority }
             if let dialog = found.first {
-                if(dialog.id != dialogStack.last()?.id){
-                    self.beginDialog(dialog)
-                }
+                self.safeBegin(dialog)
             }
         }
         waiting_for_uinput = false
         self.result = msg
         self.resume()
-    }
-    
-    /**
-        Invokes the next step of the dialog at the top of the stack
-    */
-    private func resume() -> Void {
-        print("resuming")
-        dialogStack.last()?.next(self, nil)
     }
     
     /**

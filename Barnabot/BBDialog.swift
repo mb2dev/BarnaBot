@@ -8,9 +8,10 @@
 
 import Foundation
 
-class BBDialog : NSObject {
+//https://developer.apple.com/reference/swift/equatable
+class BBDialog : Equatable {
     
-    let id : UUID
+    private let id : UUID
     let path : String
     var next : BBNext {
         get {
@@ -32,7 +33,7 @@ class BBDialog : NSObject {
     
     convenience init(_ path : String, action : @escaping BBNext) {
         self.init(path, waterfall: [BBNext]())
-        self.waterfall[0] = action;
+        self.waterfall.append(action);
     }
     
     init(_ path : String, waterfall : [BBNext]){
@@ -41,11 +42,19 @@ class BBDialog : NSObject {
         self.id = UUID()
     }
 
-    override public var description: String{
+    public var description: String{
         var result = ""
         result.append("BBDialog \n")
         result.append("- steps : \(self.waterfall.count)")
         return result
+    }
+    
+    static func == (lhs: BBDialog, rhs: BBDialog) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func copy() -> BBDialog {
+        return BBDialog(path, waterfall : waterfall)
     }
     
 }
