@@ -12,6 +12,9 @@ class BBSession : NSObject {
     
     static let sharedInstance : BBSession = BBSession()
     static let identifier : String = "BBSession_"
+    static func newInstance() -> BBSession {
+        return BBSession()
+    }
     
     var userData : [String: Any] = [String: Any]()
     var delegate : BBSessionDelegate?
@@ -89,7 +92,7 @@ class BBSession : NSObject {
         
     }
     
-    private func generateRandomNumber(min min: Int, max: Int) -> Int {
+    private func generateRandomNumber(min: Int, max: Int) -> Int {
         let randomNum = Int(arc4random_uniform(UInt32(max) - UInt32(min)) + UInt32(min))
         return randomNum
     }
