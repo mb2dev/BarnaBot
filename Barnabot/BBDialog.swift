@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BBDialog {
+class BBDialog : NSObject {
     
     var next : BBNext {
         get {
@@ -25,10 +25,11 @@ class BBDialog {
             return self.next
         }
     }
-    var waterfall : [BBNext] = [BBNext]()
+    var waterfall : [BBNext]
     private var counter : Int = 0
     
     init(action : @escaping BBNext) {
+        self.waterfall = [BBNext]()
         self.waterfall[0] = action;
     }
     
@@ -36,5 +37,11 @@ class BBDialog {
         self.waterfall = waterfall
     }
 
+    override public var description: String{
+        var result = ""
+        result.append("BBDialog \n")
+        result.append("- steps : \(self.waterfall.count)")
+        return result
+    }
     
 }
