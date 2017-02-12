@@ -40,7 +40,7 @@ class BBIntentDialog : BBDialog {
     override public var description: String{
         var result = ""
         result.append("BBIntentDialog \n")
-        result.append("- steps : \(self.count)")
+        result.append("- steps : \(self.waterfall.count)")
         result.append("- priority : \(self.priority)")
         return result
     }

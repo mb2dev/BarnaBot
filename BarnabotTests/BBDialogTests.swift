@@ -25,9 +25,7 @@ class BBDialogTests: XCTestCase {
         let dialog1 = BBDialog("/", action: {
             (session : BBSession, next : BBDialog?) -> Void in
         })
-        
         let dialog2 = dialog1.copy()
-        
         let dialog3 = BBDialog("/foo", action: {
             (session : BBSession, next : BBDialog?) -> Void in
         })
@@ -37,11 +35,26 @@ class BBDialogTests: XCTestCase {
         XCTAssert(dialog1 != dialog3)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testNext() {
+        let dialog = BBDialog("/", action: {
+            (session : BBSession, next : BBDialog?) -> Void in
+        })
+        XCTAssertEqual(dialog.counter, 0)
+        dialog.next!(BBSession.newInstance(), nil)
+        XCTAssertEqual(dialog.counter, 1)
     }
     
+    func testBeginDialog(){
+        let dialog = BBDialog("/", action: {
+            (session : BBSession, next : BBDialog?) -> Void in
+        })
+        XCTAssertEqual(dialog.counter, 0)
+        dialog.beginDialog(BBSession.newInstance(), nil)
+        XCTAssertEqual(dialog.counter, 1)
+        
+        // Subsequent calls to beginDialog does not invoke the next step
+        dialog.beginDialog(BBSession.newInstance(), nil)
+        XCTAssertEqual(dialog.counter, 1)
+        
+    }
 }

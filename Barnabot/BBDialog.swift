@@ -8,29 +8,44 @@
 
 import Foundation
 
+/// Inspired by thread states
+enum DialogState {
+    case pending
+    case new
+    case running
+    case terminated
+}
+
 //https://developer.apple.com/reference/swift/equatable
 class BBDialog : Equatable {
     
-    private let id : UUID
+    let id : UUID
+    var counter : Int = 0
+    var state : DialogState {
+        get {
+            if(self.counter-1 >= waterfall.count){
+                return .terminated
+            }else if(self.counter == 0){
+                return .new
+            }else{
+                return .running
+            }
+        }
+    }
     var waterfall : [BBNext]
-    private var counter : Int = 0
-    
-    var count : Int
     // Pour pouvoir faire des comparaisons entre plusieurs instances de BBDialog
     let path : String
     var next : BBNext? {
         get {
-            print("next getter with counter = \(counter)")
-            let c = counter
+            //print("next getter with counter = \(counter)")
             counter += 1
-            return c+1 > count ? nil : waterfall[c]
+            return self.state == .terminated ? nil : waterfall[counter-1]
         }
     }
     var beginDialog : BBNext {
         get {
-            print("beginDialog getter with counter = \(counter)")
-            counter = 0;
-            return self.next!
+            //print("beginDialog getter with counter = \(counter)")
+            return self.state == .running || self.state == .terminated ? waterfall[counter-1] : self.next!
         }
     }
     
@@ -43,14 +58,12 @@ class BBDialog : Equatable {
     convenience init(_ path : String, action : @escaping BBNext) {
         self.init(path, waterfall: [BBNext]())
         self.waterfall.append(action);
-        self.count = 1
     }
     
     init(_ path : String, waterfall : [BBNext]){
         // should force waterfall to have at least one element
         self.path = path
         self.waterfall = waterfall
-        self.count = waterfall.count
         self.id = UUID()
     }
 
@@ -62,7 +75,7 @@ class BBDialog : Equatable {
     }
     
     static func == (lhs: BBDialog, rhs: BBDialog) -> Bool {
-        print("BBDialog comparison")
+        //print("BBDialog comparison")
         return lhs.path == rhs.path
     }
     

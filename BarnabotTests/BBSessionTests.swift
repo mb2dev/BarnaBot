@@ -33,7 +33,7 @@ class BBSessionTests: XCTestCase {
         
         // does not crash
         botSession.beginConversation()
-        XCTAssert(botSession.dialogStack.count == 0)
+        XCTAssertEqual(botSession.dialogStack.count, 0)
         
         /*******************************************************/
         
@@ -46,13 +46,13 @@ class BBSessionTests: XCTestCase {
         GVBBSessionDelegate(botSession, botBuilder)
         botSession.beginConversation()
         
-        XCTAssert(botSession.dialogStack.count == 1)
+        XCTAssertEqual(botSession.dialogStack.count, 1)
         
         /*********************************************************/
         
         //Subsequent calls does nothing
         botSession.beginConversation()
-        XCTAssert(botSession.dialogStack.count == 1)
+        XCTAssertEqual(botSession.dialogStack.count, 1)
         
     }//testBeginConversation
     
@@ -91,7 +91,7 @@ class BBSessionTests: XCTestCase {
             .resume()
             .resume()
         
-        XCTAssert(botSession.dialogStack.count == 0)
+        XCTAssertEqual(botSession.dialogStack.count, 0)
     }
     
     func testWriting(){
@@ -102,7 +102,6 @@ class BBSessionTests: XCTestCase {
                 session.send("bar")
                 }])
         
-        // botSession.human_feeling is set to false in the GVBBSessionDelegate constructor
         let delegate  = GVBBSessionDelegate(botSession, botBuilder, human_feeling: true)
         botSession.beginDialog(path: "/foo")
         
@@ -111,11 +110,69 @@ class BBSessionTests: XCTestCase {
         XCTAssert(delegate.writes)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    /// ATTENTION ne pas confondre la fonction 'send' et la fonction 'promptText'
+    func testCompleteCase1(){
+        let botSession = BBSession.newInstance()
+        let botBuilder : BBBuilder = BBBuilder("Barnabot")
+        botBuilder
+            .dialog(path: "/", [{(session : BBSession, next : BBDialog?) -> Void in
+                if let name = session.userData["name"] {
+                    if let _next = next {
+                        _next.next!(session, nil)
+                    }
+                } else {
+                    session.beginDialog(path: "/profile")
+                }
+                },
+                {(session : BBSession, next : BBDialog?) -> Void in
+                    if let name = session.userData["name"] {
+                        session.send("Hello \(name)!")
+                        session.endDialog()
+                    }
+                }])
+            .dialog(path: "/profile", [{(session : BBSession, next : BBDialog?) -> Void in
+                
+                session.promptText("Hi! What is your name?")
+                
+                },{(session : BBSession, next : BBDialog?) -> Void in
+                    session.userData.updateValue(session.result, forKey: "name")
+                    session.endDialog()
+                }])
+        
+        botBuilder.dialog(path: "/end", [{(session : BBSession, next : BBDialog?) -> Void in
+            session.promptText("OK! See you tomorrow?")
+        },{(session : BBSession, next : BBDialog?) -> Void in
+            session.endDialog()
+        }])
+        
+        botBuilder.matches(regex: "bonjour", redir: "/",priority: 0);
+        botBuilder.matches(regex: "au revoir", redir: "/end",priority: 0);
+        
+        // botSession.human_feeling is set to false in the GVBBSessionDelegate constructor
+        let delegate  = GVBBSessionDelegate(botSession, botBuilder, human_feeling: false)
+        
+        /***************************************************************/
+        
+        botSession.beginConversation()
+        XCTAssertEqual(delegate.last_msg, "Hi! What is your name?")
+        let lastDialog = botSession.dialogStack.last!
+        let lastDialogInBuilder = botBuilder.dialogs["/profile"]
+        XCTAssertEqual(lastDialog.path, "/profile")
+        XCTAssertEqual(lastDialog.counter, 1)
+        XCTAssertEqual(lastDialogInBuilder?.counter, 0)
+        
+        delegate.answer("FOO")
+        
+        // A ce stade, base dialog a déjà été ejecté du stack
+        //let baseDialog = botSession.dialogStack.last!
+        //XCTAssertEqual(baseDialog.path, "/")
+        
+        XCTAssertEqual(delegate.last_msg, "Hello FOO!")
+        XCTAssertEqual(botSession.userData["name"] as! String, "FOO")
+        // Tous les dialogues sont résolus
+        XCTAssertEqual(botSession.dialogStack.count, 0)
+        
+        /***************************************************************/
     }
     
 }

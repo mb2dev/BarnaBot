@@ -38,4 +38,8 @@ class GVBBSessionDelegate : BBSessionDelegate {
     func writing(){
         writes = true
     }
+    
+    func answer(_ msg : String){
+        botSession.receive(msg)
+    }
 }

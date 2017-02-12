@@ -8,6 +8,14 @@
 
 import Foundation
 
+/// Inspired by thread states
+enum SessionState {
+    case pending
+    case new
+    case running
+    case terminated
+}
+
 class BBSession {
     
     static let sharedInstance : BBSession = BBSession()
@@ -16,10 +24,22 @@ class BBSession {
         return BBSession()
     }
     
+    var state : SessionState {
+        get {
+            if(_dialogStack.count > 0){
+                return .running
+            }else{
+                return .pending
+            }
+        }
+    }
     var human_feeling : Bool = true
     var userData : [String: Any] = [String: Any]()
     var delegate : BBSessionDelegate?
+    /// Stores the result of a prompt to pass the value to the next dialog step
+    var result : String = String()
     
+    private var waiting_for_uinput : Bool = false
     private var _dialogStack : Stack<BBDialog> = Stack<BBDialog>()
     public var dialogStack : Stack<BBDialog> {
         get {
@@ -28,13 +48,6 @@ class BBSession {
             return stack
         }
     }
-    var inConversation : Bool {
-        get {
-            return _dialogStack.count > 0
-        }
-    }
-    private var result : String = String()
-    private var waiting_for_uinput : Bool = false
     
     private init() {}
     
@@ -44,8 +57,8 @@ class BBSession {
         Invokes by default the dialog registered at the path **"/"**.
     */
     func beginConversation() -> BBSession {
-        print("beginConversation")
-        return inConversation ? self : beginDialog(path: "/")
+        //print("beginConversation")
+        return self.state == .running ? self : beginDialog(path: "/")
     }
     
     /**
@@ -63,13 +76,14 @@ class BBSession {
         Starts a dialog and push it on the top of the dialog stack
      */
     private func beginDialog(_ dialog: BBDialog) -> BBSession {
-        print("private beginDialog")
-        _dialogStack.push(dialog.copy())
-        dialog.beginDialog(self, nil)
+        //print("private beginDialog")
+        let copy = dialog.copy()
+        _dialogStack.push(copy)
+        copy.beginDialog(self, nil)
         return self
     }
     
-    func safeBegin(_ dialog : BBDialog){
+    private func safeBegin(_ dialog : BBDialog){
         if(dialog != dialogStack.last){
             self.beginDialog(dialog)
         }
@@ -98,7 +112,10 @@ class BBSession {
     */
     func endDialog() -> BBSession {
         _dialogStack.pop()
-        return self.resume()
+        if(self.state != .pending){
+            return  self.resume()
+        }
+        return self
     }
     
     /**
@@ -107,7 +124,7 @@ class BBSession {
      Should be private
      */
     func resume() -> BBSession {
-        print("resuming")
+        //print("resuming")
         if let dialog = _dialogStack.last {
             if let next = dialog.next {
                 next(self, nil)
