@@ -44,11 +44,7 @@ class BBSession {
     }
     
     var human_feeling : Bool = true
-<<<<<<< HEAD
-=======
     var luis_connector : Bool = true
-    var userData : [String: Any] = [String: Any]()
->>>>>>> b0306a1ad7b0e6293545687a5085d38fe36a38a8
     var delegate : BBSessionDelegate?
     /// Stores the result of a prompt to pass the value to the next dialog step
     var result : String = String()

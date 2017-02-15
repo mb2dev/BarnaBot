@@ -32,8 +32,8 @@ class BBBuilder {
     /************************* String as Regex *******************************/
     
     // with redir
-    func matches(regex:String, redir:String, priority:Int) ->BBBuilder{
-        return matches(regex: stringToRegex(regex), redir: redir, priority: priority)
+    func matches(regex:String, priority:Int, redir:String) ->BBBuilder{
+        return matches(regex: stringToRegex(regex), priority: priority, redir: redir)
     }
     
     // with waterfall
@@ -54,7 +54,7 @@ class BBBuilder {
     /************************* Regex as Regex *******************************/
     
     // with redir
-    func matches(regex:NSRegularExpression, redir:String, priority:Int) ->BBBuilder{
+    func matches(regex:NSRegularExpression, priority:Int, redir:String) ->BBBuilder{
         intents.updateValue(BBIntentDialog(regex, redir: redir, priority: priority), forKey: regex)
         return self
     }

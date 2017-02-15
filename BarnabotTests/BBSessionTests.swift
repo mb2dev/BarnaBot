@@ -150,8 +150,8 @@ class BBSessionTests: XCTestCase {
             }])
         
         botBuilder
-            .matches(regex: "^bonjour", redir: "/",priority: 0)
-            .matches(regex: "^au revoir", redir: "/end",priority: 0)
+            .matches(regex: "^bonjour", priority: 0, redir: "/")
+            .matches(regex: "^au revoir", priority: 0, redir: "/end")
             .matches(regex: "^help$", priority: 0, [{(session : BBSession) -> Void in
                 session.send("Bot Help")
             }])
