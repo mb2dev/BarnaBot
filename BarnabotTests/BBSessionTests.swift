@@ -110,6 +110,65 @@ class BBSessionTests: XCTestCase {
         XCTAssert(delegate.writes)
     }
     
+    // Asynchronous test
+    func testHumanFeeling(){
+        var delayedRepsonseExpectation : XCTestExpectation = expectation(description: "delayed response")
+        
+        let botSession = BBSession.newInstance()
+        let botBuilder : BBBuilder = BBBuilder("Barnabot")
+        
+        botBuilder
+            .dialog(path: "/foo", [{(session : BBSession, next : BBDialog?) -> Void in
+                session.send("bar")
+            }])
+        
+        // human_feeling = true => a delay is applied
+        let delegate  = GVBBSessionDelegate(botSession, botBuilder, human_feeling: true)
+        botSession.beginDialog(path: "/foo")
+        delegate.completionHandler = {() -> Void in
+            delayedRepsonseExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: {(err : Error?) -> Void in
+            // NOTHING
+        })
+    }
+    
+    func testMatching(){
+        let botSession = BBSession.newInstance()
+        let botBuilder : BBBuilder = BBBuilder("Barnabot")
+        botBuilder.dialog(path: "/end", [{(session : BBSession, next : BBDialog?) -> Void in
+            session.send("See U")
+            },{(session : BBSession, next : BBDialog?) -> Void in
+                session.endDialog()
+            }])
+            .dialog(path: "/", [{(session : BBSession, next : BBDialog?) -> Void in
+                session.send("Hello!")
+                session.endDialog()
+            }])
+        
+        botBuilder
+            .matches(regex: "^bonjour", redir: "/",priority: 0)
+            .matches(regex: "^au revoir", redir: "/end",priority: 0)
+            .matches(regex: "^help$", priority: 0, [{(session : BBSession, next : BBDialog?) -> Void in
+                session.send("Bot Help")
+                }])
+        
+        let delegate  = GVBBSessionDelegate(botSession, botBuilder, human_feeling: false)
+        
+        botSession.receive("bonjour Barnabot")
+        XCTAssertEqual(delegate.last_msg, "Hello!")
+        
+        botSession.receive("au revoir Barnabot")
+        XCTAssertEqual(delegate.last_msg, "See U")
+        
+        botSession.receive("help Barnabot") //does not match
+        XCTAssertEqual(delegate.last_msg, "See U")
+        
+        botSession.receive("help") // match
+        XCTAssertEqual(delegate.last_msg, "Bot Help")
+    }
+    
     /// ATTENTION ne pas confondre la fonction 'send' et la fonction 'promptText'
     func testCompleteCase1(){
         let botSession = BBSession.newInstance()
@@ -140,13 +199,10 @@ class BBSessionTests: XCTestCase {
                 }])
         
         botBuilder.dialog(path: "/end", [{(session : BBSession, next : BBDialog?) -> Void in
-            session.promptText("OK! See you tomorrow?")
+            session.send("See U")
         },{(session : BBSession, next : BBDialog?) -> Void in
             session.endDialog()
         }])
-        
-        botBuilder.matches(regex: "bonjour", redir: "/",priority: 0);
-        botBuilder.matches(regex: "au revoir", redir: "/end",priority: 0);
         
         // botSession.human_feeling is set to false in the GVBBSessionDelegate constructor
         let delegate  = GVBBSessionDelegate(botSession, botBuilder, human_feeling: false)
@@ -158,7 +214,7 @@ class BBSessionTests: XCTestCase {
         let lastDialog = botSession.dialogStack.last!
         let lastDialogInBuilder = botBuilder.dialogs["/profile"]
         XCTAssertEqual(lastDialog.path, "/profile")
-        XCTAssertEqual(lastDialog.counter, 1)
+        //XCTAssertEqual(lastDialog.counter, 1)
         XCTAssertEqual(lastDialogInBuilder?.counter, 0)
         
         delegate.answer("FOO")
