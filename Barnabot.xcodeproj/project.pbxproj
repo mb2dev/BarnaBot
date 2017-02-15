@@ -7,13 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA18719B1E50A8B400D040EC /* BBBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1871951E50A8B400D040EC /* BBBuilderTests.swift */; };
+		CA18719C1E50A8B400D040EC /* BBDialogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1871961E50A8B400D040EC /* BBDialogTests.swift */; };
+		CA18719D1E50A8B400D040EC /* BBIntentDialogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1871971E50A8B400D040EC /* BBIntentDialogTests.swift */; };
+		CA18719E1E50A8B400D040EC /* BBSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1871981E50A8B400D040EC /* BBSessionTests.swift */; };
+		CA18719F1E50A8B400D040EC /* GVBBSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1871991E50A8B400D040EC /* GVBBSessionDelegate.swift */; };
+		CA1871A01E50A8B400D040EC /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18719A1E50A8B400D040EC /* StackTests.swift */; };
+		CA38B9C51E545CAF00CCD497 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38B9C31E545CAF00CCD497 /* Constant.swift */; };
+		CA38B9C61E545CAF00CCD497 /* LuisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38B9C41E545CAF00CCD497 /* LuisManager.swift */; };
+		CA38B9CB1E545CCA00CCD497 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38B9C81E545CCA00CCD497 /* Entities.swift */; };
+		CA38B9CC1E545CCA00CCD497 /* LuisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38B9C91E545CCA00CCD497 /* LuisModel.swift */; };
+		CA38B9CD1E545CCA00CCD497 /* TopScoringIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38B9CA1E545CCA00CCD497 /* TopScoringIntent.swift */; };
+		CA70C9C21E4E62C40034BBD3 /* BBBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BB1E4E62C40034BBD3 /* BBBuilder.swift */; };
+		CA70C9C31E4E62C40034BBD3 /* BBDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BC1E4E62C40034BBD3 /* BBDialog.swift */; };
+		CA70C9C41E4E62C40034BBD3 /* BBIntentDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BD1E4E62C40034BBD3 /* BBIntentDialog.swift */; };
+		CA70C9C51E4E62C40034BBD3 /* BBNext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BE1E4E62C40034BBD3 /* BBNext.swift */; };
+		CA70C9C61E4E62C40034BBD3 /* BBSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BF1E4E62C40034BBD3 /* BBSession.swift */; };
+		CA70C9C71E4E62C40034BBD3 /* BBSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9C01E4E62C40034BBD3 /* BBSessionDelegate.swift */; };
+		CA70C9C81E4E62C40034BBD3 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9C11E4E62C40034BBD3 /* Stack.swift */; };
 		CAB4B6591E40021A001A67F3 /* Barnabot.h in Headers */ = {isa = PBXBuildFile; fileRef = CAB4B6571E40021A001A67F3 /* Barnabot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CAB4B6681E400377001A67F3 /* Barnabot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB4B6541E40021A001A67F3 /* Barnabot.framework */; };
+		CAB4B6711E4004C1001A67F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4B6701E4004C1001A67F3 /* User.swift */; };
+		CAB4B6721E400617001A67F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4B6701E4004C1001A67F3 /* User.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CAB4B6691E400377001A67F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAB4B64B1E40021A001A67F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAB4B6531E40021A001A67F3;
+			remoteInfo = Barnabot;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		CA1871951E50A8B400D040EC /* BBBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBBuilderTests.swift; sourceTree = "<group>"; };
+		CA1871961E50A8B400D040EC /* BBDialogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBDialogTests.swift; sourceTree = "<group>"; };
+		CA1871971E50A8B400D040EC /* BBIntentDialogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBIntentDialogTests.swift; sourceTree = "<group>"; };
+		CA1871981E50A8B400D040EC /* BBSessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBSessionTests.swift; sourceTree = "<group>"; };
+		CA1871991E50A8B400D040EC /* GVBBSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GVBBSessionDelegate.swift; sourceTree = "<group>"; };
+		CA18719A1E50A8B400D040EC /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
+		CA38B9C31E545CAF00CCD497 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		CA38B9C41E545CAF00CCD497 /* LuisManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuisManager.swift; sourceTree = "<group>"; };
+		CA38B9C81E545CCA00CCD497 /* Entities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
+		CA38B9C91E545CCA00CCD497 /* LuisModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuisModel.swift; sourceTree = "<group>"; };
+		CA38B9CA1E545CCA00CCD497 /* TopScoringIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopScoringIntent.swift; sourceTree = "<group>"; };
+		CA70C9BB1E4E62C40034BBD3 /* BBBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBBuilder.swift; sourceTree = "<group>"; };
+		CA70C9BC1E4E62C40034BBD3 /* BBDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBDialog.swift; sourceTree = "<group>"; };
+		CA70C9BD1E4E62C40034BBD3 /* BBIntentDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBIntentDialog.swift; sourceTree = "<group>"; };
+		CA70C9BE1E4E62C40034BBD3 /* BBNext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBNext.swift; sourceTree = "<group>"; };
+		CA70C9BF1E4E62C40034BBD3 /* BBSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBSession.swift; sourceTree = "<group>"; };
+		CA70C9C01E4E62C40034BBD3 /* BBSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBSessionDelegate.swift; sourceTree = "<group>"; };
+		CA70C9C11E4E62C40034BBD3 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		CAB4B6541E40021A001A67F3 /* Barnabot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Barnabot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB4B6571E40021A001A67F3 /* Barnabot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Barnabot.h; sourceTree = "<group>"; };
 		CAB4B6581E40021A001A67F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAB4B6631E400377001A67F3 /* BarnabotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarnabotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAB4B6651E400377001A67F3 /* BarnabotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarnabotTests.swift; sourceTree = "<group>"; };
+		CAB4B6671E400377001A67F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAB4B66E1E4004AC001A67F3 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		CAB4B6701E4004C1001A67F3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,13 +78,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CAB4B6601E400377001A67F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAB4B6681E400377001A67F3 /* Barnabot.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA38B9C21E545C9400CCD497 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CA38B9C31E545CAF00CCD497 /* Constant.swift */,
+				CA38B9C41E545CAF00CCD497 /* LuisManager.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		CA38B9C71E545CB500CCD497 /* modelLuis */ = {
+			isa = PBXGroup;
+			children = (
+				CA38B9C81E545CCA00CCD497 /* Entities.swift */,
+				CA38B9C91E545CCA00CCD497 /* LuisModel.swift */,
+				CA38B9CA1E545CCA00CCD497 /* TopScoringIntent.swift */,
+			);
+			name = modelLuis;
+			sourceTree = "<group>";
+		};
 		CAB4B64A1E40021A001A67F3 = {
 			isa = PBXGroup;
 			children = (
 				CAB4B6561E40021A001A67F3 /* Barnabot */,
+				CAB4B6641E400377001A67F3 /* BarnabotTests */,
 				CAB4B6551E40021A001A67F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -39,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				CAB4B6541E40021A001A67F3 /* Barnabot.framework */,
+				CAB4B6631E400377001A67F3 /* BarnabotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -46,10 +129,36 @@
 		CAB4B6561E40021A001A67F3 /* Barnabot */ = {
 			isa = PBXGroup;
 			children = (
+				CA38B9C71E545CB500CCD497 /* modelLuis */,
+				CA38B9C21E545C9400CCD497 /* Utils */,
+				CA70C9BB1E4E62C40034BBD3 /* BBBuilder.swift */,
+				CA70C9BC1E4E62C40034BBD3 /* BBDialog.swift */,
+				CA70C9BD1E4E62C40034BBD3 /* BBIntentDialog.swift */,
+				CA70C9BE1E4E62C40034BBD3 /* BBNext.swift */,
+				CA70C9BF1E4E62C40034BBD3 /* BBSession.swift */,
+				CA70C9C01E4E62C40034BBD3 /* BBSessionDelegate.swift */,
+				CA70C9C11E4E62C40034BBD3 /* Stack.swift */,
+				CAB4B6701E4004C1001A67F3 /* User.swift */,
 				CAB4B6571E40021A001A67F3 /* Barnabot.h */,
 				CAB4B6581E40021A001A67F3 /* Info.plist */,
 			);
 			path = Barnabot;
+			sourceTree = "<group>";
+		};
+		CAB4B6641E400377001A67F3 /* BarnabotTests */ = {
+			isa = PBXGroup;
+			children = (
+				CA1871951E50A8B400D040EC /* BBBuilderTests.swift */,
+				CA1871961E50A8B400D040EC /* BBDialogTests.swift */,
+				CA1871971E50A8B400D040EC /* BBIntentDialogTests.swift */,
+				CA1871981E50A8B400D040EC /* BBSessionTests.swift */,
+				CA1871991E50A8B400D040EC /* GVBBSessionDelegate.swift */,
+				CA18719A1E50A8B400D040EC /* StackTests.swift */,
+				CAB4B66E1E4004AC001A67F3 /* UserTests.swift */,
+				CAB4B6651E400377001A67F3 /* BarnabotTests.swift */,
+				CAB4B6671E400377001A67F3 /* Info.plist */,
+			);
+			path = BarnabotTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,16 +193,40 @@
 			productReference = CAB4B6541E40021A001A67F3 /* Barnabot.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		CAB4B6621E400377001A67F3 /* BarnabotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAB4B66B1E400377001A67F3 /* Build configuration list for PBXNativeTarget "BarnabotTests" */;
+			buildPhases = (
+				CAB4B65F1E400377001A67F3 /* Sources */,
+				CAB4B6601E400377001A67F3 /* Frameworks */,
+				CAB4B6611E400377001A67F3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAB4B66A1E400377001A67F3 /* PBXTargetDependency */,
+			);
+			name = BarnabotTests;
+			productName = BarnabotTests;
+			productReference = CAB4B6631E400377001A67F3 /* BarnabotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		CAB4B64B1E40021A001A67F3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Mickael Bordage";
 				TargetAttributes = {
 					CAB4B6531E40021A001A67F3 = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+					CAB4B6621E400377001A67F3 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 					};
@@ -112,12 +245,20 @@
 			projectRoot = "";
 			targets = (
 				CAB4B6531E40021A001A67F3 /* Barnabot */,
+				CAB4B6621E400377001A67F3 /* BarnabotTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CAB4B6521E40021A001A67F3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAB4B6611E400377001A67F3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -131,10 +272,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA38B9CC1E545CCA00CCD497 /* LuisModel.swift in Sources */,
+				CAB4B6711E4004C1001A67F3 /* User.swift in Sources */,
+				CA70C9C51E4E62C40034BBD3 /* BBNext.swift in Sources */,
+				CA38B9C51E545CAF00CCD497 /* Constant.swift in Sources */,
+				CA70C9C61E4E62C40034BBD3 /* BBSession.swift in Sources */,
+				CA70C9C41E4E62C40034BBD3 /* BBIntentDialog.swift in Sources */,
+				CA38B9CD1E545CCA00CCD497 /* TopScoringIntent.swift in Sources */,
+				CA70C9C81E4E62C40034BBD3 /* Stack.swift in Sources */,
+				CA70C9C71E4E62C40034BBD3 /* BBSessionDelegate.swift in Sources */,
+				CA70C9C31E4E62C40034BBD3 /* BBDialog.swift in Sources */,
+				CA38B9C61E545CAF00CCD497 /* LuisManager.swift in Sources */,
+				CA70C9C21E4E62C40034BBD3 /* BBBuilder.swift in Sources */,
+				CA38B9CB1E545CCA00CCD497 /* Entities.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAB4B65F1E400377001A67F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA18719C1E50A8B400D040EC /* BBDialogTests.swift in Sources */,
+				CA18719D1E50A8B400D040EC /* BBIntentDialogTests.swift in Sources */,
+				CAB4B6721E400617001A67F3 /* User.swift in Sources */,
+				CA1871A01E50A8B400D040EC /* StackTests.swift in Sources */,
+				CA18719B1E50A8B400D040EC /* BBBuilderTests.swift in Sources */,
+				CA18719F1E50A8B400D040EC /* GVBBSessionDelegate.swift in Sources */,
+				CA18719E1E50A8B400D040EC /* BBSessionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CAB4B66A1E400377001A67F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAB4B6531E40021A001A67F3 /* Barnabot */;
+			targetProxy = CAB4B6691E400377001A67F3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CAB4B65A1E40021A001A67F3 /* Debug */ = {
@@ -239,6 +415,7 @@
 		CAB4B65D1E40021A001A67F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -246,10 +423,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Barnabot/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = esgi.Barnabot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -257,6 +436,7 @@
 		CAB4B65E1E40021A001A67F3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -264,10 +444,39 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Barnabot/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = esgi.Barnabot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		CAB4B66C1E400377001A67F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = BarnabotTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = esgi.BarnabotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CAB4B66D1E400377001A67F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = BarnabotTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = esgi.BarnabotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -291,6 +500,16 @@
 				CAB4B65E1E40021A001A67F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAB4B66B1E400377001A67F3 /* Build configuration list for PBXNativeTarget "BarnabotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAB4B66C1E400377001A67F3 /* Debug */,
+				CAB4B66D1E400377001A67F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
