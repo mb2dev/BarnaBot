@@ -25,7 +25,7 @@ class BBIntentDialogTests: XCTestCase {
         do{
             let regex1 = try NSRegularExpression.init(pattern: "^hello")
             let dialog1 = BBIntentDialog(regex1, action: {
-                (session : BBSession, next : BBDialog?) -> Void in
+                (session : BBSession) -> Void in
             }, priority: 0)
         
             let regex2 = try NSRegularExpression.init(pattern: "^hello")
@@ -33,7 +33,7 @@ class BBIntentDialogTests: XCTestCase {
         
             let regex3 = try NSRegularExpression.init(pattern: "^help")
             let dialog3 = BBIntentDialog(regex3, action: {
-                (session : BBSession, next : BBDialog?) -> Void in
+                (session : BBSession) -> Void in
             }, priority: 0)
             
             // comparison is done on "path"

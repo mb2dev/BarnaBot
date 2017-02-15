@@ -49,9 +49,9 @@ class BBDialog : Equatable {
         }
     }
     
-    func resume(_ session : BBSession,_ nextDialog : BBDialog?){
+    func resume(_ session : BBSession){
         if let next = self.next {
-            next(session, nextDialog)
+            next(session)
         }
     }
     

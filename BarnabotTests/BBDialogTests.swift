@@ -23,11 +23,11 @@ class BBDialogTests: XCTestCase {
     
     func testComparison() {
         let dialog1 = BBDialog("/", action: {
-            (session : BBSession, next : BBDialog?) -> Void in
+            (session : BBSession) -> Void in
         })
         let dialog2 = dialog1.copy()
         let dialog3 = BBDialog("/foo", action: {
-            (session : BBSession, next : BBDialog?) -> Void in
+            (session : BBSession) -> Void in
         })
         
         // comparison is done on "path"
@@ -37,23 +37,23 @@ class BBDialogTests: XCTestCase {
     
     func testNext() {
         let dialog = BBDialog("/", action: {
-            (session : BBSession, next : BBDialog?) -> Void in
+            (session : BBSession) -> Void in
         })
         XCTAssertEqual(dialog.counter, 0)
-        dialog.next!(BBSession.newInstance(), nil)
+        dialog.next!(BBSession.newInstance())
         XCTAssertEqual(dialog.counter, 1)
     }
     
     func testBeginDialog(){
         let dialog = BBDialog("/", action: {
-            (session : BBSession, next : BBDialog?) -> Void in
+            (session : BBSession) -> Void in
         })
         XCTAssertEqual(dialog.counter, 0)
-        dialog.beginDialog(BBSession.newInstance(), nil)
+        dialog.beginDialog(BBSession.newInstance())
         XCTAssertEqual(dialog.counter, 1)
         
         // Subsequent calls to beginDialog does not invoke the next step
-        dialog.beginDialog(BBSession.newInstance(), nil)
+        dialog.beginDialog(BBSession.newInstance())
         XCTAssertEqual(dialog.counter, 1)
         
     }

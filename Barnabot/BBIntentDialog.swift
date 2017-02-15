@@ -19,7 +19,7 @@ class BBIntentDialog : BBDialog {
     }
     
     convenience init(_ regex : NSRegularExpression, redir : String, priority:Int){
-        let waterfall : [BBNext] = [{(session : BBSession, next : BBDialog?) -> Void in
+        let waterfall : [BBNext] = [{(session : BBSession) -> Void in
             session.beginDialog(path: redir)
         }]
         self.init(regex, waterfall : waterfall, priority: priority)
