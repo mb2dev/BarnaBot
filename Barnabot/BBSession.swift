@@ -19,9 +19,18 @@ enum SessionState {
 class BBSession {
     
     static let sharedInstance : BBSession = BBSession()
-    static let identifier : String = "BBSession_"
+    static let identifier : String = "BBSession"
+    /*static func newInstance(_ sharedUserData : Bool?) -> BBSession {
+        if let sud = sharedUserData {
+            return BBSession(sharedUserData : sud)
+        }
+        return BBSession(sharedUserData: false)
+    }*/
     static func newInstance() -> BBSession {
-        return BBSession()
+        return BBSession(sharedUserData: false)
+    }
+    static func newInstance(sharedUserData : Bool) -> BBSession {
+        return BBSession(sharedUserData : sharedUserData)
     }
     
     var state : SessionState {
@@ -33,12 +42,16 @@ class BBSession {
             }
         }
     }
+    
     var human_feeling : Bool = true
+
     var luis_connector : Bool = true
     var userData : [String: Any] = [String: Any]()
+
     var delegate : BBSessionDelegate?
     /// Stores the result of a prompt to pass the value to the next dialog step
     var result : String = String()
+    var sharedUserData : Bool = true
     
     private var waiting_for_uinput : Bool = false
     private var _dialogStack : Stack<BBDialog> = Stack<BBDialog>()
@@ -50,7 +63,23 @@ class BBSession {
         }
     }
     
-    private init() {}
+    private convenience init(){
+        self.init(sharedUserData : true)
+    }
+    
+    private init(sharedUserData: Bool) {
+        self.sharedUserData = sharedUserData
+        if self.sharedUserData {
+            let defaults = UserDefaults.standard
+            if let data = defaults.dictionary(forKey: BBSession.identifier) {
+                userData = data as! [String: Any]
+            } else {
+                userData = [String: Any]()
+            }
+        }else{
+            userData = [String: Any]()
+        }
+    }
     
     /**
         Entry point to start interacting with the user.
@@ -80,7 +109,7 @@ class BBSession {
         //print("private beginDialog")
         let copy = dialog.copy()
         _dialogStack.push(copy)
-        copy.beginDialog(self, nil)
+        copy.beginDialog(self)
         return self
     }
     
@@ -95,13 +124,30 @@ class BBSession {
     */
     private func saveUserData() -> BBSession {
         let defaults = UserDefaults.standard
-        
-        for (key, value) in userData {
-            defaults.setValue(value, forKey: BBSession.identifier + key )
-        }
-        
+        defaults.setValue(userData, forKey: BBSession.identifier)
         defaults.synchronize()
         return self
+    }
+    
+    func saveUserData(value : Any, forKey: String) -> BBSession {
+        userData.updateValue(value, forKey: forKey)
+        return self.sharedUserData ? saveUserData() : self
+    }
+    
+    func getUserData(_ key: String) -> Any?{
+        return userData[key]
+    }
+    
+    /*
+     - todo: notify every session sharing data
+    */
+    func deleteUserData(){
+        self.userData.removeAll(keepingCapacity: true)
+        if self.sharedUserData {
+            let defaults = UserDefaults.standard
+            defaults.removeObject(forKey: BBSession.identifier)
+            defaults.synchronize()
+        }
     }
     
     /**
@@ -128,13 +174,15 @@ class BBSession {
         //print("resuming")
         if let dialog = _dialogStack.last {
             if let next = dialog.next {
-                next(self, nil)
+                next(self)
             } else {
                 self.endDialog()
             }
         }
         return self
     }
+    
+    func next() -> BBSession { return self.resume() }
     
     /**
         - todo:
@@ -160,10 +208,10 @@ class BBSession {
      
         Gives a human feeling by applying a delay before sending a message
      */
-    func send(_ msg : String) -> Void {
+    func send(_ msg : String) -> BBSession {
         if(self.human_feeling){
             self.delegate?.writing()
-            let delay : NSNumber = NSNumber.init(value: Float(generateRandomNumber(min: 500, max: 3000)) / Float(1000))
+            let delay : NSNumber = NSNumber.init(value: Float(generateRandomNumber(min: 1000, max: 5000)) / Float(1000))
             let interval : TimeInterval = TimeInterval.init(delay)
             Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(timerSend), userInfo: msg, repeats: false)
         }else{
@@ -173,6 +221,7 @@ class BBSession {
                 print("BBSession has no delegate")
             }
         }
+        return self
     }
     
     @objc func timerSend(timer : Timer) -> Void {
@@ -189,9 +238,9 @@ class BBSession {
     /**
         Sends with format
      */
-    func send(format : String, args : AnyObject...) -> Void {
+    func send(format : String, args : AnyObject...) -> BBSession {
         let msg : String = String(format: format, args)
-        send(msg)
+        return send(msg)
     }
     
     /**
