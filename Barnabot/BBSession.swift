@@ -44,6 +44,11 @@ class BBSession {
     }
     
     var human_feeling : Bool = true
+<<<<<<< HEAD
+=======
+    var luis_connector : Bool = true
+    var userData : [String: Any] = [String: Any]()
+>>>>>>> b0306a1ad7b0e6293545687a5085d38fe36a38a8
     var delegate : BBSessionDelegate?
     /// Stores the result of a prompt to pass the value to the next dialog step
     var result : String = String()
@@ -281,15 +286,26 @@ class BBSession {
         // TODO envoyer à LUIS / recast.ai
         print("received msg : \(msg)")
         
-        // ATTENTION à ne pas relancer un dialog déjà en cours 
-        // (en recevant 2 fois "bonjour" à la suite par exemple)
-        var found : [BBIntentDialog] = matches(text: msg)
-        if found.count > 0 {
-            found = found.sorted { $0.priority > $1.priority }
-            if let dialog = found.first {
-                self.safeBegin(dialog)
+        if luis_connector {
+            print("on passe ici")
+            LuisManager.sharedIntances.RequestLuis(msg: msg){ responce in
+                print("callback", responce.description)
+                self.beginDialog(path: responce.topScoring.intent)
+            }
+        }else{
+            // ATTENTION à ne pas relancer un dialog déjà en cours
+            // (en recevant 2 fois "bonjour" à la suite par exemple)
+            var found : [BBIntentDialog] = matches(text: msg)
+            if found.count > 0 {
+                found = found.sorted { $0.priority > $1.priority }
+                if let dialog = found.first {
+                    self.safeBegin(dialog)
+                }
             }
         }
+        
+        
+        
         waiting_for_uinput = false
         self.result = msg
         self.resume()

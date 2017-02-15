@@ -13,6 +13,11 @@
 		CA18719E1E50A8B400D040EC /* BBSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1871981E50A8B400D040EC /* BBSessionTests.swift */; };
 		CA18719F1E50A8B400D040EC /* GVBBSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1871991E50A8B400D040EC /* GVBBSessionDelegate.swift */; };
 		CA1871A01E50A8B400D040EC /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18719A1E50A8B400D040EC /* StackTests.swift */; };
+		CA38B9C51E545CAF00CCD497 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38B9C31E545CAF00CCD497 /* Constant.swift */; };
+		CA38B9C61E545CAF00CCD497 /* LuisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38B9C41E545CAF00CCD497 /* LuisManager.swift */; };
+		CA38B9CB1E545CCA00CCD497 /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38B9C81E545CCA00CCD497 /* Entities.swift */; };
+		CA38B9CC1E545CCA00CCD497 /* LuisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38B9C91E545CCA00CCD497 /* LuisModel.swift */; };
+		CA38B9CD1E545CCA00CCD497 /* TopScoringIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38B9CA1E545CCA00CCD497 /* TopScoringIntent.swift */; };
 		CA70C9C21E4E62C40034BBD3 /* BBBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BB1E4E62C40034BBD3 /* BBBuilder.swift */; };
 		CA70C9C31E4E62C40034BBD3 /* BBDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BC1E4E62C40034BBD3 /* BBDialog.swift */; };
 		CA70C9C41E4E62C40034BBD3 /* BBIntentDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9BD1E4E62C40034BBD3 /* BBIntentDialog.swift */; };
@@ -43,6 +48,11 @@
 		CA1871981E50A8B400D040EC /* BBSessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBSessionTests.swift; sourceTree = "<group>"; };
 		CA1871991E50A8B400D040EC /* GVBBSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GVBBSessionDelegate.swift; sourceTree = "<group>"; };
 		CA18719A1E50A8B400D040EC /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackTests.swift; sourceTree = "<group>"; };
+		CA38B9C31E545CAF00CCD497 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		CA38B9C41E545CAF00CCD497 /* LuisManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuisManager.swift; sourceTree = "<group>"; };
+		CA38B9C81E545CCA00CCD497 /* Entities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
+		CA38B9C91E545CCA00CCD497 /* LuisModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuisModel.swift; sourceTree = "<group>"; };
+		CA38B9CA1E545CCA00CCD497 /* TopScoringIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopScoringIntent.swift; sourceTree = "<group>"; };
 		CA70C9BB1E4E62C40034BBD3 /* BBBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBBuilder.swift; sourceTree = "<group>"; };
 		CA70C9BC1E4E62C40034BBD3 /* BBDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBDialog.swift; sourceTree = "<group>"; };
 		CA70C9BD1E4E62C40034BBD3 /* BBIntentDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBIntentDialog.swift; sourceTree = "<group>"; };
@@ -79,6 +89,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA38B9C21E545C9400CCD497 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CA38B9C31E545CAF00CCD497 /* Constant.swift */,
+				CA38B9C41E545CAF00CCD497 /* LuisManager.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		CA38B9C71E545CB500CCD497 /* modelLuis */ = {
+			isa = PBXGroup;
+			children = (
+				CA38B9C81E545CCA00CCD497 /* Entities.swift */,
+				CA38B9C91E545CCA00CCD497 /* LuisModel.swift */,
+				CA38B9CA1E545CCA00CCD497 /* TopScoringIntent.swift */,
+			);
+			name = modelLuis;
+			sourceTree = "<group>";
+		};
 		CAB4B64A1E40021A001A67F3 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +129,8 @@
 		CAB4B6561E40021A001A67F3 /* Barnabot */ = {
 			isa = PBXGroup;
 			children = (
+				CA38B9C71E545CB500CCD497 /* modelLuis */,
+				CA38B9C21E545C9400CCD497 /* Utils */,
 				CA70C9BB1E4E62C40034BBD3 /* BBBuilder.swift */,
 				CA70C9BC1E4E62C40034BBD3 /* BBDialog.swift */,
 				CA70C9BD1E4E62C40034BBD3 /* BBIntentDialog.swift */,
@@ -241,14 +272,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA38B9CC1E545CCA00CCD497 /* LuisModel.swift in Sources */,
 				CAB4B6711E4004C1001A67F3 /* User.swift in Sources */,
 				CA70C9C51E4E62C40034BBD3 /* BBNext.swift in Sources */,
+				CA38B9C51E545CAF00CCD497 /* Constant.swift in Sources */,
 				CA70C9C61E4E62C40034BBD3 /* BBSession.swift in Sources */,
 				CA70C9C41E4E62C40034BBD3 /* BBIntentDialog.swift in Sources */,
+				CA38B9CD1E545CCA00CCD497 /* TopScoringIntent.swift in Sources */,
 				CA70C9C81E4E62C40034BBD3 /* Stack.swift in Sources */,
 				CA70C9C71E4E62C40034BBD3 /* BBSessionDelegate.swift in Sources */,
 				CA70C9C31E4E62C40034BBD3 /* BBDialog.swift in Sources */,
+				CA38B9C61E545CAF00CCD497 /* LuisManager.swift in Sources */,
 				CA70C9C21E4E62C40034BBD3 /* BBBuilder.swift in Sources */,
+				CA38B9CB1E545CCA00CCD497 /* Entities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
