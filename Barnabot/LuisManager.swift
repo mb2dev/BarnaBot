@@ -11,11 +11,12 @@ import Foundation
 public class LuisManager{
     
      public static let sharedIntances = LuisManager()
+     public static let endPoint = ""
     
     func RequestLuis(msg:String, completion: @escaping (LuisModel)->Void){
         var dictionary:[String: AnyObject]? = nil
         let escapedString = msg.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        let url = URL(string: Barnabot.LuisConfig.endPoint + "&q=" + escapedString!)
+        let url = URL(string: LuisManager.endPoint + "&q=" + escapedString!)
         _ = URLSession.shared.dataTask(with: url!) { data, response, error in
             guard error == nil else {
                 print(error)

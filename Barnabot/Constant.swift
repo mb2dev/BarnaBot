@@ -10,10 +10,6 @@ import Foundation
 
 struct Barnabot {
     
-    struct LuisConfig{
-        // endPoint with appId  and subscription key
-        static let endPoint = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/229071cd-12b8-435b-ae7f-24d329ad5c98?subscription-key=0792efcbf6bf43339f992509848055a5"
-    }
     
     struct LuisJson {
         
