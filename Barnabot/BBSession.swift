@@ -162,9 +162,9 @@ class BBSession {
     func send(_ msg : String) -> Void {
         if(self.human_feeling){
             self.delegate?.writing()
-            let delay : NSNumber = NSNumber.init(value: generateRandomNumber(min: 500, max: 3000) / 1000)
+            let delay : NSNumber = NSNumber.init(value: Float(generateRandomNumber(min: 500, max: 3000)) / Float(1000))
             let interval : TimeInterval = TimeInterval.init(delay)
-            Timer.init(timeInterval: interval, target: self, selector: #selector(timerSend), userInfo: msg, repeats: false)
+            Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(timerSend), userInfo: msg, repeats: false)
         }else{
             if let deleg = delegate {
                 deleg.send(msg)

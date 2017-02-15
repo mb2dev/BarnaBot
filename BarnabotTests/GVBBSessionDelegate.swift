@@ -15,7 +15,8 @@ class GVBBSessionDelegate : BBSessionDelegate {
     var botBuilder : BBBuilder
     var last_msg : String = String()
     var writes : Bool = false
-    
+    // for asynchronous testing
+    var completionHandler : (() -> Void)?
     
     convenience init(_ session : BBSession, _ builder : BBBuilder){
         self.init(session, builder, human_feeling : false)
@@ -33,6 +34,9 @@ class GVBBSessionDelegate : BBSessionDelegate {
         writes = false
         print(msg)
         last_msg = msg
+        if let handler = completionHandler {
+            handler()
+        }
     }
     
     func writing(){
