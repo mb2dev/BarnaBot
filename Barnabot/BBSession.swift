@@ -45,7 +45,7 @@ class BBSession {
     
     var human_feeling : Bool = true
 
-    var luis_connector : Bool = true
+    var luis_connector : Bool = false
     var userData : [String: Any] = [String: Any]()
 
     var delegate : BBSessionDelegate?
