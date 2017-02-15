@@ -9,4 +9,4 @@
 import Foundation
 
 // http://fuckingclosuresyntax.com
-typealias BBNext = (BBSession, BBDialog?) -> Void
+typealias BBNext = (BBSession) -> Void

@@ -19,6 +19,9 @@ class BBSessionTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: BBSession.identifier)
+        defaults.synchronize()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
@@ -39,7 +42,7 @@ class BBSessionTests: XCTestCase {
         
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
         botBuilder
-            .dialog(path: "/", [{(session : BBSession, next : BBDialog?) -> Void in
+            .dialog(path: "/", [{(session : BBSession) -> Void in
                 session.send("foo")
             }])
         
@@ -60,7 +63,7 @@ class BBSessionTests: XCTestCase {
         let botSession = BBSession.newInstance()
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
         botBuilder
-            .dialog(path: "/foo", [{(session : BBSession, next : BBDialog?) -> Void in
+            .dialog(path: "/foo", [{(session : BBSession) -> Void in
                 session.send("bar")
             }])
         
@@ -76,7 +79,7 @@ class BBSessionTests: XCTestCase {
         let botSession = BBSession.newInstance()
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
         botBuilder
-            .dialog(path: "/foo", [{(session : BBSession, next : BBDialog?) -> Void in
+            .dialog(path: "/foo", [{(session : BBSession) -> Void in
                 session.send("bar")
                 }])
         
@@ -98,7 +101,7 @@ class BBSessionTests: XCTestCase {
         let botSession = BBSession.newInstance()
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
         botBuilder
-            .dialog(path: "/foo", [{(session : BBSession, next : BBDialog?) -> Void in
+            .dialog(path: "/foo", [{(session : BBSession) -> Void in
                 session.send("bar")
                 }])
         
@@ -118,7 +121,7 @@ class BBSessionTests: XCTestCase {
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
         
         botBuilder
-            .dialog(path: "/foo", [{(session : BBSession, next : BBDialog?) -> Void in
+            .dialog(path: "/foo", [{(session : BBSession) -> Void in
                 session.send("bar")
             }])
         
@@ -137,22 +140,21 @@ class BBSessionTests: XCTestCase {
     func testMatching(){
         let botSession = BBSession.newInstance()
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
-        botBuilder.dialog(path: "/end", [{(session : BBSession, next : BBDialog?) -> Void in
+        botBuilder.dialog(path: "/end", [{(session : BBSession) -> Void in
             session.send("See U")
-            },{(session : BBSession, next : BBDialog?) -> Void in
+            },{(session : BBSession) -> Void in
                 session.endDialog()
             }])
-            .dialog(path: "/", [{(session : BBSession, next : BBDialog?) -> Void in
-                session.send("Hello!")
-                session.endDialog()
+            .dialog(path: "/", [{(session : BBSession) -> Void in
+                session.send("Hello!").endDialog()
             }])
         
         botBuilder
             .matches(regex: "^bonjour", redir: "/",priority: 0)
             .matches(regex: "^au revoir", redir: "/end",priority: 0)
-            .matches(regex: "^help$", priority: 0, [{(session : BBSession, next : BBDialog?) -> Void in
+            .matches(regex: "^help$", priority: 0, [{(session : BBSession) -> Void in
                 session.send("Bot Help")
-                }])
+            }])
         
         let delegate  = GVBBSessionDelegate(botSession, botBuilder, human_feeling: false)
         
@@ -169,38 +171,64 @@ class BBSessionTests: XCTestCase {
         XCTAssertEqual(delegate.last_msg, "Bot Help")
     }
     
+    func testPersistence(){
+        
+        // sharedUserData = false
+        let botSession1 = BBSession.newInstance()
+        XCTAssertNil(botSession1.getUserData("name"))
+        botSession1.saveUserData(value: "foo", forKey: "name") //does not persist
+        // is saved in local dictionary
+        XCTAssertEqual(botSession1.getUserData("name") as! String, "foo")
+        
+        // sharedUserData = false
+        let botSession2 = BBSession.newInstance()
+        XCTAssertNil(botSession2.getUserData("name"))
+        botSession2.saveUserData(value: "bar", forKey: "name") //does not persist
+        // is saved in local dictionary
+        XCTAssertEqual(botSession2.getUserData("name") as! String, "bar")
+        
+        let botSession3 = BBSession.newInstance(sharedUserData : true)
+        XCTAssertNil(botSession3.getUserData("name"))
+        botSession3.saveUserData(value: "quux", forKey: "name") //persists
+        XCTAssertEqual(BBSession.sharedInstance.getUserData("name") as! String, "quux")
+        
+        botSession3.deleteUserData()
+        XCTAssertNil(botSession3.getUserData("name"))
+        // sharedInstance n'est pas notifiée du changement dans botSession3
+        XCTAssertEqual(BBSession.sharedInstance.getUserData("name") as! String, "quux")
+        XCTAssertNil(BBSession.newInstance(sharedUserData : true).getUserData("name"))
+    }
+    
     /// ATTENTION ne pas confondre la fonction 'send' et la fonction 'promptText'
     func testCompleteCase1(){
         let botSession = BBSession.newInstance()
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
         botBuilder
-            .dialog(path: "/", [{(session : BBSession, next : BBDialog?) -> Void in
-                if let name = session.userData["name"] {
-                    if let _next = next {
-                        _next.next!(session, nil)
-                    }
+            .dialog(path: "/", [{(session : BBSession) -> Void in
+                if let name = session.getUserData("name") {
+                    session.next()
                 } else {
                     session.beginDialog(path: "/profile")
                 }
                 },
-                {(session : BBSession, next : BBDialog?) -> Void in
-                    if let name = session.userData["name"] {
-                        session.send("Hello \(name)!")
-                        session.endDialog()
+                {(session : BBSession) -> Void in
+                    if let name = session.getUserData("name") {
+                        session.send("Hello \(name)!").endDialog()
                     }
                 }])
-            .dialog(path: "/profile", [{(session : BBSession, next : BBDialog?) -> Void in
+            .dialog(path: "/profile", [{(session : BBSession) -> Void in
                 
                 session.promptText("Hi! What is your name?")
                 
-                },{(session : BBSession, next : BBDialog?) -> Void in
-                    session.userData.updateValue(session.result, forKey: "name")
-                    session.endDialog()
+                },{(session : BBSession) -> Void in
+                    session
+                        .saveUserData(value: session.result, forKey: "name")
+                        .endDialog()
                 }])
         
-        botBuilder.dialog(path: "/end", [{(session : BBSession, next : BBDialog?) -> Void in
+        botBuilder.dialog(path: "/end", [{(session : BBSession) -> Void in
             session.send("See U")
-        },{(session : BBSession, next : BBDialog?) -> Void in
+        },{(session : BBSession) -> Void in
             session.endDialog()
         }])
         
@@ -224,7 +252,7 @@ class BBSessionTests: XCTestCase {
         //XCTAssertEqual(baseDialog.path, "/")
         
         XCTAssertEqual(delegate.last_msg, "Hello FOO!")
-        XCTAssertEqual(botSession.userData["name"] as! String, "FOO")
+        XCTAssertEqual(botSession.getUserData("name") as! String, "FOO")
         // Tous les dialogues sont résolus
         XCTAssertEqual(botSession.dialogStack.count, 0)
         
