@@ -11,7 +11,7 @@ import Foundation
 public class LuisManager{
     
      public static let sharedIntances = LuisManager()
-     public static let endPoint = ""
+     public static let endPoint = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/229071cd-12b8-435b-ae7f-24d329ad5c98?subscription-key=0792efcbf6bf43339f992509848055a5"
     
     func RequestLuis(msg:String, completion: @escaping (LuisModel)->Void){
         var dictionary:[String: AnyObject]? = nil
