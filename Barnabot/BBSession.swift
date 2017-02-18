@@ -20,12 +20,7 @@ class BBSession {
     
     static let sharedInstance : BBSession = BBSession()
     static let identifier : String = "BBSession"
-    /*static func newInstance(_ sharedUserData : Bool?) -> BBSession {
-        if let sud = sharedUserData {
-            return BBSession(sharedUserData : sud)
-        }
-        return BBSession(sharedUserData: false)
-    }*/
+    
     static func newInstance() -> BBSession {
         return BBSession(sharedUserData: false)
     }
@@ -43,16 +38,17 @@ class BBSession {
         }
     }
     
-    var human_feeling : Bool = true
-
-    var luis_connector : Bool = false
-    var userData : [String: Any] = [String: Any]()
-
-    var delegate : BBSessionDelegate?
+    var flags : [String : Bool] = [
+        "human_feeling": true,
+        "luis_connector": false,
+        "sharedUserData": true
+    ]
+    
     /// Stores the result of a prompt to pass the value to the next dialog step
     var result : String = String()
-    var sharedUserData : Bool = true
+    var delegate : BBSessionDelegate?
     
+    private var userData : [String: Any] = [String: Any]()
     private var waiting_for_uinput : Bool = false
     private var _dialogStack : Stack<BBDialog> = Stack<BBDialog>()
     public var dialogStack : Stack<BBDialog> {
@@ -68,8 +64,8 @@ class BBSession {
     }
     
     private init(sharedUserData: Bool) {
-        self.sharedUserData = sharedUserData
-        if self.sharedUserData {
+        self.flags["sharedUserData"] = sharedUserData
+        if self.flags["sharedUserData"]! {
             let defaults = UserDefaults.standard
             if let data = defaults.dictionary(forKey: BBSession.identifier) {
                 userData = data
@@ -133,7 +129,7 @@ class BBSession {
     
     func saveUserData(value : Any, forKey: String) -> BBSession {
         userData.updateValue(value, forKey: forKey)
-        return self.sharedUserData ? saveUserData() : self
+        return self.flags["sharedUserData"]! ? saveUserData() : self
     }
     
     func getUserData(_ key: String) -> Any?{
@@ -145,7 +141,7 @@ class BBSession {
     */
     func deleteUserData(){
         self.userData.removeAll(keepingCapacity: true)
-        if self.sharedUserData {
+        if self.flags["sharedUserData"]! {
             let defaults = UserDefaults.standard
             defaults.removeObject(forKey: BBSession.identifier)
             defaults.synchronize()
@@ -211,7 +207,7 @@ class BBSession {
         Gives a human feeling by applying a delay before sending a message
      */
     func send(_ msg : String) -> BBSession {
-        if(self.human_feeling){
+        if self.flags["human_feeling"]! {
             self.delegate?.writing()
             let delay : NSNumber = NSNumber.init(value: Float(generateRandomNumber(min: 1000, max: 5000)) / Float(1000))
             let interval : TimeInterval = TimeInterval.init(delay)
@@ -286,7 +282,7 @@ class BBSession {
         // TODO envoyer à LUIS / recast.ai
         print("received msg : \(msg)")
         
-        if luis_connector {
+        if self.flags["luis_connector"]! {
             print("on passe ici")
             LuisManager.sharedIntances.RequestLuis(msg: msg){ responce in
                 print("callback", responce.description)
@@ -303,8 +299,6 @@ class BBSession {
                 }
             }
         }
-        
-        
         
         waiting_for_uinput = false
         self.result = msg
