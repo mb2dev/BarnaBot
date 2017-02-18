@@ -20,12 +20,7 @@ class BBSession {
     
     static let sharedInstance : BBSession = BBSession()
     static let identifier : String = "BBSession"
-    /*static func newInstance(_ sharedUserData : Bool?) -> BBSession {
-        if let sud = sharedUserData {
-            return BBSession(sharedUserData : sud)
-        }
-        return BBSession(sharedUserData: false)
-    }*/
+    
     static func newInstance() -> BBSession {
         return BBSession(sharedUserData: false)
     }
