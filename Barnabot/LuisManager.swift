@@ -19,7 +19,7 @@ public class LuisManager{
         let url = URL(string: LuisManager.endPoint + "&q=" + escapedString!)
         _ = URLSession.shared.dataTask(with: url!) { data, response, error in
             guard error == nil else {
-                print(error)
+                print(error.debugDescription)
                 return
             }
             guard let data = data else {
@@ -40,7 +40,7 @@ public class LuisManager{
     
     func readJsonLuis(JsonObject: [String: AnyObject]) -> LuisModel{
         let query = JsonObject[Barnabot.LuisJson.query]  as? String
-        let topScorinIntentObject = JsonObject[Barnabot.LuisJson.topScoringIntent]  as?  AnyObject
+        let topScorinIntentObject = JsonObject[Barnabot.LuisJson.topScoringIntent]
         let intent = topScorinIntentObject?[Barnabot.LuisJson.intent] as? String
         let score = topScorinIntentObject?[Barnabot.LuisJson.score] as? Double
         

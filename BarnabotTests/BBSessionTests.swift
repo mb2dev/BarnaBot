@@ -41,20 +41,20 @@ class BBSessionTests: XCTestCase {
         /*******************************************************/
         
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
-        botBuilder
+        _ = botBuilder
             .dialog(path: "/", [{(session : BBSession) -> Void in
-                session.send("foo")
+                _ = session.send("foo")
             }])
         
-        GVBBSessionDelegate(botSession, botBuilder)
-        botSession.beginConversation()
+        _ = GVBBSessionDelegate(botSession, botBuilder)
+        _ = botSession.beginConversation()
         
         XCTAssertEqual(botSession.dialogStack.count, 1)
         
         /*********************************************************/
         
         //Subsequent calls does nothing
-        botSession.beginConversation()
+        _ = botSession.beginConversation()
         XCTAssertEqual(botSession.dialogStack.count, 1)
         
     }//testBeginConversation
@@ -62,14 +62,14 @@ class BBSessionTests: XCTestCase {
     func testBeginDialog(){
         let botSession = BBSession.newInstance()
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
-        botBuilder
+        _ = botBuilder
             .dialog(path: "/foo", [{(session : BBSession) -> Void in
-                session.send("bar")
+                _ = session.send("bar")
             }])
         
         // botSession.human_feeling is set to false in the GVBBSessionDelegate constructor
         let delegate  = GVBBSessionDelegate(botSession, botBuilder)
-        botSession.beginDialog(path: "/foo")
+        _ = botSession.beginDialog(path: "/foo")
         
         XCTAssert(botSession.dialogStack.count == 1)
         XCTAssertEqual(delegate.last_msg, "bar")
@@ -78,18 +78,18 @@ class BBSessionTests: XCTestCase {
     func testResume(){
         let botSession = BBSession.newInstance()
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
-        botBuilder
+        _ = botBuilder
             .dialog(path: "/foo", [{(session : BBSession) -> Void in
-                session.send("bar")
-                }])
+                _ = session.send("bar")
+            }])
         
         // botSession.human_feeling is set to false in the GVBBSessionDelegate constructor
-        let delegate  = GVBBSessionDelegate(botSession, botBuilder)
-        botSession
+        _ = GVBBSessionDelegate(botSession, botBuilder)
+        _ = botSession
             .resume()
             .resume()
         
-        botSession
+        _ = botSession
             .beginDialog(path: "/foo")
             .resume()
             .resume()
@@ -100,13 +100,13 @@ class BBSessionTests: XCTestCase {
     func testWriting(){
         let botSession = BBSession.newInstance()
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
-        botBuilder
+        _ = botBuilder
             .dialog(path: "/foo", [{(session : BBSession) -> Void in
-                session.send("bar")
-                }])
+                _ = session.send("bar")
+            }])
         
         let delegate  = GVBBSessionDelegate(botSession, botBuilder, human_feeling: true)
-        botSession.beginDialog(path: "/foo")
+        _ = botSession.beginDialog(path: "/foo")
         
         // human_feeling = true => a delay is applied
         XCTAssertEqual(delegate.last_msg, "")
@@ -115,19 +115,19 @@ class BBSessionTests: XCTestCase {
     
     // Asynchronous test
     func testHumanFeeling(){
-        var delayedRepsonseExpectation : XCTestExpectation = expectation(description: "delayed response")
+        let delayedRepsonseExpectation : XCTestExpectation = expectation(description: "delayed response")
         
         let botSession = BBSession.newInstance()
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
         
-        botBuilder
+        _ = botBuilder
             .dialog(path: "/foo", [{(session : BBSession) -> Void in
-                session.send("bar")
+                _ = session.send("bar")
             }])
         
         // human_feeling = true => a delay is applied
         let delegate  = GVBBSessionDelegate(botSession, botBuilder, human_feeling: true)
-        botSession.beginDialog(path: "/foo")
+        _ = botSession.beginDialog(path: "/foo")
         delegate.completionHandler = {() -> Void in
             delayedRepsonseExpectation.fulfill()
         }
@@ -140,20 +140,20 @@ class BBSessionTests: XCTestCase {
     func testMatching(){
         let botSession = BBSession.newInstance()
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
-        botBuilder.dialog(path: "/end", [{(session : BBSession) -> Void in
-            session.send("See U")
+        _ = botBuilder.dialog(path: "/end", [{(session : BBSession) -> Void in
+                _ = session.send("See U")
             },{(session : BBSession) -> Void in
-                session.endDialog()
+                _ = session.endDialog()
             }])
             .dialog(path: "/", [{(session : BBSession) -> Void in
-                session.send("Hello!").endDialog()
+                _ = session.send("Hello!").endDialog()
             }])
         
-        botBuilder
+        _ = botBuilder
             .matches(regex: "^bonjour", redir: "/",priority: 0)
             .matches(regex: "^au revoir", redir: "/end",priority: 0)
             .matches(regex: "^help$", priority: 0, [{(session : BBSession) -> Void in
-                session.send("Bot Help")
+                _ = session.send("Bot Help")
             }])
         
         let delegate  = GVBBSessionDelegate(botSession, botBuilder, human_feeling: false)
@@ -176,20 +176,20 @@ class BBSessionTests: XCTestCase {
         // sharedUserData = false
         let botSession1 = BBSession.newInstance()
         XCTAssertNil(botSession1.getUserData("name"))
-        botSession1.saveUserData(value: "foo", forKey: "name") //does not persist
+        _ = botSession1.saveUserData(value: "foo", forKey: "name") //does not persist
         // is saved in local dictionary
         XCTAssertEqual(botSession1.getUserData("name") as! String, "foo")
         
         // sharedUserData = false
         let botSession2 = BBSession.newInstance()
         XCTAssertNil(botSession2.getUserData("name"))
-        botSession2.saveUserData(value: "bar", forKey: "name") //does not persist
+        _ = botSession2.saveUserData(value: "bar", forKey: "name") //does not persist
         // is saved in local dictionary
         XCTAssertEqual(botSession2.getUserData("name") as! String, "bar")
         
         let botSession3 = BBSession.newInstance(sharedUserData : true)
         XCTAssertNil(botSession3.getUserData("name"))
-        botSession3.saveUserData(value: "quux", forKey: "name") //persists
+        _ = botSession3.saveUserData(value: "quux", forKey: "name") //persists
         XCTAssertEqual(BBSession.sharedInstance.getUserData("name") as! String, "quux")
         
         botSession3.deleteUserData()
@@ -203,17 +203,17 @@ class BBSessionTests: XCTestCase {
     func testCompleteCase1(){
         let botSession = BBSession.newInstance()
         let botBuilder : BBBuilder = BBBuilder("Barnabot")
-        botBuilder
+        _ = botBuilder
             .dialog(path: "/", [{(session : BBSession) -> Void in
-                if let name = session.getUserData("name") {
-                    session.next()
+                if session.getUserData("name") != nil {
+                    _ = session.next()
                 } else {
-                    session.beginDialog(path: "/profile")
+                    _ = session.beginDialog(path: "/profile")
                 }
                 },
                 {(session : BBSession) -> Void in
                     if let name = session.getUserData("name") {
-                        session.send("Hello \(name)!").endDialog()
+                        _ = session.send("Hello \(name)!").endDialog()
                     }
                 }])
             .dialog(path: "/profile", [{(session : BBSession) -> Void in
@@ -221,15 +221,15 @@ class BBSessionTests: XCTestCase {
                 session.promptText("Hi! What is your name?")
                 
                 },{(session : BBSession) -> Void in
-                    session
+                    _ = session
                         .saveUserData(value: session.result, forKey: "name")
                         .endDialog()
                 }])
         
-        botBuilder.dialog(path: "/end", [{(session : BBSession) -> Void in
-            session.send("See U")
+        _ = botBuilder.dialog(path: "/end", [{(session : BBSession) -> Void in
+            _ = session.send("See U")
         },{(session : BBSession) -> Void in
-            session.endDialog()
+            _ = session.endDialog()
         }])
         
         // botSession.human_feeling is set to false in the GVBBSessionDelegate constructor
