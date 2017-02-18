@@ -1,0 +1,775 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 11,
+      "symbol": "BBBuilder",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 13,
+      "symbol": "BBBuilder.botName",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 15,
+      "symbol": "BBBuilder.dialogs",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 16,
+      "symbol": "BBBuilder.intents",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 18,
+      "symbol": "BBBuilder.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 22,
+      "symbol": "BBBuilder.dialog(path:dialog:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 27,
+      "symbol": "BBBuilder.dialog(path:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 35,
+      "symbol": "BBBuilder.matches(regex:redir:priority:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 40,
+      "symbol": "BBBuilder.matches(regex:priority:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 44,
+      "symbol": "BBBuilder.stringToRegex(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 57,
+      "symbol": "BBBuilder.matches(regex:redir:priority:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBBuilder.swift",
+      "line": 63,
+      "symbol": "BBBuilder.matches(regex:priority:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 13,
+      "symbol": "DialogState.pending",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 14,
+      "symbol": "DialogState.new",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 15,
+      "symbol": "DialogState.running",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 16,
+      "symbol": "DialogState.terminated",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 20,
+      "symbol": "BBDialog",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 22,
+      "symbol": "BBDialog.id",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 23,
+      "symbol": "BBDialog.counter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 24,
+      "symbol": "BBDialog.state",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 35,
+      "symbol": "BBDialog.waterfall",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 37,
+      "symbol": "BBDialog.path",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 38,
+      "symbol": "BBDialog.next",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 45,
+      "symbol": "BBDialog.beginDialog",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 52,
+      "symbol": "BBDialog.resume(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 58,
+      "symbol": "BBDialog.init(_:action:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 63,
+      "symbol": "BBDialog.init(_:waterfall:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 70,
+      "symbol": "BBDialog.description",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBDialog.swift",
+      "line": 82,
+      "symbol": "BBDialog.copy()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBIntentDialog.swift",
+      "line": 11,
+      "symbol": "BBIntentDialog",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBIntentDialog.swift",
+      "line": 13,
+      "symbol": "BBIntentDialog.priority",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBIntentDialog.swift",
+      "line": 15,
+      "symbol": "BBIntentDialog.regex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBIntentDialog.swift",
+      "line": 17,
+      "symbol": "BBIntentDialog.init(_:priority:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBIntentDialog.swift",
+      "line": 21,
+      "symbol": "BBIntentDialog.init(_:redir:priority:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBIntentDialog.swift",
+      "line": 28,
+      "symbol": "BBIntentDialog.init(_:action:priority:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBIntentDialog.swift",
+      "line": 34,
+      "symbol": "BBIntentDialog.init(_:waterfall:priority:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBIntentDialog.swift",
+      "line": 40,
+      "symbol": "BBIntentDialog.description",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBIntentDialog.swift",
+      "line": 48,
+      "symbol": "BBIntentDialog.copy()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 13,
+      "symbol": "SessionState.pending",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 14,
+      "symbol": "SessionState.new",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 15,
+      "symbol": "SessionState.running",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 16,
+      "symbol": "SessionState.terminated",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 19,
+      "symbol": "BBSession",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 21,
+      "symbol": "BBSession.sharedInstance",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 22,
+      "symbol": "BBSession.identifier",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 29,
+      "symbol": "BBSession.newInstance()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 32,
+      "symbol": "BBSession.newInstance(sharedUserData:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 36,
+      "symbol": "BBSession.state",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 46,
+      "symbol": "BBSession.human_feeling",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 48,
+      "symbol": "BBSession.luis_connector",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 49,
+      "symbol": "BBSession.userData",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 51,
+      "symbol": "BBSession.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 54,
+      "symbol": "BBSession.sharedUserData",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 58,
+      "symbol": "BBSession.dialogStack",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 134,
+      "symbol": "BBSession.saveUserData(value:forKey:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 139,
+      "symbol": "BBSession.getUserData(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 146,
+      "symbol": "BBSession.deleteUserData()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 187,
+      "symbol": "BBSession.next()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSession.swift",
+      "line": 229,
+      "symbol": "BBSession.timerSend(timer:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSessionDelegate.swift",
+      "line": 11,
+      "symbol": "BBSessionDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSessionDelegate.swift",
+      "line": 12,
+      "symbol": "BBSessionDelegate.botSession",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSessionDelegate.swift",
+      "line": 13,
+      "symbol": "BBSessionDelegate.botBuilder",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSessionDelegate.swift",
+      "line": 14,
+      "symbol": "BBSessionDelegate.send(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/BBSessionDelegate.swift",
+      "line": 15,
+      "symbol": "BBSessionDelegate.writing()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Constant.swift",
+      "line": 11,
+      "symbol": "Barnabot",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Constant.swift",
+      "line": 14,
+      "symbol": "Barnabot.LuisJson",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Constant.swift",
+      "line": 16,
+      "symbol": "Barnabot.LuisJson.query",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Constant.swift",
+      "line": 17,
+      "symbol": "Barnabot.LuisJson.topScoringIntent",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Constant.swift",
+      "line": 18,
+      "symbol": "Barnabot.LuisJson.intent",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Constant.swift",
+      "line": 19,
+      "symbol": "Barnabot.LuisJson.score",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Constant.swift",
+      "line": 20,
+      "symbol": "Barnabot.LuisJson.endIndex",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Constant.swift",
+      "line": 21,
+      "symbol": "Barnabot.LuisJson.entities",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Constant.swift",
+      "line": 22,
+      "symbol": "Barnabot.LuisJson.entity",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Constant.swift",
+      "line": 23,
+      "symbol": "Barnabot.LuisJson.startIndex",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Constant.swift",
+      "line": 24,
+      "symbol": "Barnabot.LuisJson.type",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Entities.swift",
+      "line": 11,
+      "symbol": "Entities",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Entities.swift",
+      "line": 13,
+      "symbol": "Entities.entity",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Entities.swift",
+      "line": 14,
+      "symbol": "Entities.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Entities.swift",
+      "line": 15,
+      "symbol": "Entities.startIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Entities.swift",
+      "line": 16,
+      "symbol": "Entities.endIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Entities.swift",
+      "line": 17,
+      "symbol": "Entities.score",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Entities.swift",
+      "line": 19,
+      "symbol": "Entities.init(entity:type:startIndex:endIndex:score:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Entities.swift",
+      "line": 27,
+      "symbol": "Entities.description",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/LuisManager.swift",
+      "line": 11,
+      "symbol": "LuisManager",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/LuisManager.swift",
+      "line": 13,
+      "symbol": "LuisManager.sharedIntances",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/LuisManager.swift",
+      "line": 14,
+      "symbol": "LuisManager.endPoint",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/LuisManager.swift",
+      "line": 16,
+      "symbol": "LuisManager.RequestLuis(msg:completion:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/LuisManager.swift",
+      "line": 41,
+      "symbol": "LuisManager.readJsonLuis(JsonObject:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/LuisModel.swift",
+      "line": 11,
+      "symbol": "LuisModel",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/LuisModel.swift",
+      "line": 13,
+      "symbol": "LuisModel.query",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/LuisModel.swift",
+      "line": 14,
+      "symbol": "LuisModel.topScoring",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/LuisModel.swift",
+      "line": 15,
+      "symbol": "LuisModel.entities",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/LuisModel.swift",
+      "line": 17,
+      "symbol": "LuisModel.init(query:topScoring:entities:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/LuisModel.swift",
+      "line": 23,
+      "symbol": "LuisModel.description",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Stack.swift",
+      "line": 11,
+      "symbol": "Stack",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Stack.swift",
+      "line": 12,
+      "symbol": "Stack.items",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Stack.swift",
+      "line": 13,
+      "symbol": "Stack.count",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Stack.swift",
+      "line": 18,
+      "symbol": "Stack.last",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Stack.swift",
+      "line": 23,
+      "symbol": "Stack.push(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/Stack.swift",
+      "line": 26,
+      "symbol": "Stack.pop()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/TopScoringIntent.swift",
+      "line": 11,
+      "symbol": "TopScoringIntent",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/TopScoringIntent.swift",
+      "line": 12,
+      "symbol": "TopScoringIntent.intent",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/TopScoringIntent.swift",
+      "line": 13,
+      "symbol": "TopScoringIntent.score",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/TopScoringIntent.swift",
+      "line": 15,
+      "symbol": "TopScoringIntent.init(intent:score:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/TopScoringIntent.swift",
+      "line": 20,
+      "symbol": "TopScoringIntent.description",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/User.swift",
+      "line": 11,
+      "symbol": "User",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/User.swift",
+      "line": 13,
+      "symbol": "User.login",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/User.swift",
+      "line": 14,
+      "symbol": "User.password",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/User.swift",
+      "line": 16,
+      "symbol": "User.init(login:password:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot/Barnabot/User.swift",
+      "line": 21,
+      "symbol": "User.description",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/gerardvautrin/Documents/Gabriel/ESGI/iOS/Projets/BarnaBot"
+}
