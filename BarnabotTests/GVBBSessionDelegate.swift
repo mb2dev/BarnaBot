@@ -24,7 +24,7 @@ class GVBBSessionDelegate : BBSessionDelegate {
     
     init(_ session : BBSession, _ builder : BBBuilder, human_feeling : Bool){
         botSession = session
-        botSession.human_feeling = human_feeling
+        botSession.flags["human_feeling"] = human_feeling
         botBuilder = builder
         session.delegate = self
     }
