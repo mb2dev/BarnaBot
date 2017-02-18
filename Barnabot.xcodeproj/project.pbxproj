@@ -27,8 +27,6 @@
 		CA70C9C81E4E62C40034BBD3 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70C9C11E4E62C40034BBD3 /* Stack.swift */; };
 		CAB4B6591E40021A001A67F3 /* Barnabot.h in Headers */ = {isa = PBXBuildFile; fileRef = CAB4B6571E40021A001A67F3 /* Barnabot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAB4B6681E400377001A67F3 /* Barnabot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB4B6541E40021A001A67F3 /* Barnabot.framework */; };
-		CAB4B6711E4004C1001A67F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4B6701E4004C1001A67F3 /* User.swift */; };
-		CAB4B6721E400617001A67F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4B6701E4004C1001A67F3 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +64,6 @@
 		CAB4B6631E400377001A67F3 /* BarnabotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarnabotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB4B6651E400377001A67F3 /* BarnabotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarnabotTests.swift; sourceTree = "<group>"; };
 		CAB4B6671E400377001A67F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CAB4B66E1E4004AC001A67F3 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
-		CAB4B6701E4004C1001A67F3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +134,6 @@
 				CA70C9BF1E4E62C40034BBD3 /* BBSession.swift */,
 				CA70C9C01E4E62C40034BBD3 /* BBSessionDelegate.swift */,
 				CA70C9C11E4E62C40034BBD3 /* Stack.swift */,
-				CAB4B6701E4004C1001A67F3 /* User.swift */,
 				CAB4B6571E40021A001A67F3 /* Barnabot.h */,
 				CAB4B6581E40021A001A67F3 /* Info.plist */,
 			);
@@ -154,7 +149,6 @@
 				CA1871981E50A8B400D040EC /* BBSessionTests.swift */,
 				CA1871991E50A8B400D040EC /* GVBBSessionDelegate.swift */,
 				CA18719A1E50A8B400D040EC /* StackTests.swift */,
-				CAB4B66E1E4004AC001A67F3 /* UserTests.swift */,
 				CAB4B6651E400377001A67F3 /* BarnabotTests.swift */,
 				CAB4B6671E400377001A67F3 /* Info.plist */,
 			);
@@ -273,7 +267,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA38B9CC1E545CCA00CCD497 /* LuisModel.swift in Sources */,
-				CAB4B6711E4004C1001A67F3 /* User.swift in Sources */,
 				CA70C9C51E4E62C40034BBD3 /* BBNext.swift in Sources */,
 				CA38B9C51E545CAF00CCD497 /* Constant.swift in Sources */,
 				CA70C9C61E4E62C40034BBD3 /* BBSession.swift in Sources */,
@@ -294,7 +287,6 @@
 			files = (
 				CA18719C1E50A8B400D040EC /* BBDialogTests.swift in Sources */,
 				CA18719D1E50A8B400D040EC /* BBIntentDialogTests.swift in Sources */,
-				CAB4B6721E400617001A67F3 /* User.swift in Sources */,
 				CA1871A01E50A8B400D040EC /* StackTests.swift in Sources */,
 				CA18719B1E50A8B400D040EC /* BBBuilderTests.swift in Sources */,
 				CA18719F1E50A8B400D040EC /* GVBBSessionDelegate.swift in Sources */,
