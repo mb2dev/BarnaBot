@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Barnabot  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Barnabot  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Barnabot Docs</a> (12% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Barnabot Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Barnabot  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/BBBuilder.html">BBBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BBDialog.html">BBDialog</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BBIntentDialog.html">BBIntentDialog</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BBSession.html">BBSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Entities.html">Entities</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/LuisManager.html">LuisManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/LuisModel.html">LuisModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TopScoringIntent.html">TopScoringIntent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/User.html">User</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/DialogState.html">DialogState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SessionState.html">SessionState</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/BBSessionDelegate.html">BBSessionDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Barnabot.html">Barnabot</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Barnabot/LuisJson.html">– LuisJson</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Stack.html">Stack</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#barnabot' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='barnabot'>BarnaBot</h1>
+
+<p>A local bot written in Swift for awesome user interactions!<br>
+Inspired by the <a href="https://dev.botframework.com">Microsoft Bot Framework</a></p>
+<a href='#simple-declaration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='simple-declaration'>Simple declaration</h3>
+<pre class="highlight swift"><code>    <span class="k">var</span> <span class="nv">botBuilder</span> <span class="o">=</span> <span class="kt">BBBuilder</span><span class="p">(</span><span class="s">"Barnabot"</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">botSession</span> <span class="o">=</span> <span class="kt">BBSession</span><span class="o">.</span><span class="n">sharedInstance</span>
+    <span class="n">botSession</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+
+    <span class="n">botBuilder</span>
+        <span class="o">.</span><span class="nf">dialog</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="s">"/"</span><span class="p">,</span> <span class="p">[{(</span><span class="nv">session</span> <span class="p">:</span> <span class="kt">BBSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="nf">getUserData</span><span class="p">(</span><span class="s">"name"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">session</span><span class="o">.</span><span class="nf">next</span><span class="p">()</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">session</span><span class="o">.</span><span class="nf">beginDialog</span><span class="p">(</span><span class="s">"/profile"</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{(</span><span class="nv">session</span> <span class="p">:</span> <span class="kt">BBSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="nf">getUserData</span><span class="p">(</span><span class="s">"name"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">session</span><span class="o">.</span><span class="nf">send</span><span class="p">(</span><span class="s">"Hello </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="n">session</span><span class="o">.</span><span class="nf">endDialog</span><span class="p">()</span>
+        <span class="p">}])</span>
+        <span class="o">.</span><span class="nf">dialog</span><span class="p">(</span><span class="n">path</span> <span class="s">"/profile"</span><span class="p">,</span> <span class="p">[{(</span><span class="nv">session</span> <span class="p">:</span> <span class="kt">BBSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+            <span class="n">session</span><span class="o">.</span><span class="nf">promptText</span><span class="p">(</span><span class="s">"What's your name?"</span><span class="p">)</span>
+        <span class="p">},{(</span><span class="nv">session</span> <span class="p">:</span> <span class="kt">BBSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+            <span class="n">session</span><span class="o">.</span><span class="nf">saveUserData</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="n">session</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"name"</span><span class="p">)</span><span class="o">.</span><span class="nf">endDialog</span><span class="p">()</span>
+        <span class="p">}])</span>
+
+    <span class="n">botSession</span><span class="o">.</span><span class="nf">beginConversation</span><span class="p">()</span>
+</code></pre>
+<a href='#intents-support' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='intents-support'>Intents support</h3>
+<pre class="highlight swift"><code>  <span class="n">botBuilder</span>
+    <span class="o">.</span><span class="nf">matches</span><span class="p">(</span><span class="s">"^help$"</span><span class="p">,</span> <span class="nv">priority</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">redir</span><span class="p">:</span> <span class="s">"/help"</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">matches</span><span class="p">(</span><span class="s">"^bonjour"</span><span class="p">,</span> <span class="nv">priority</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[{(</span><span class="nv">session</span> <span class="p">:</span> <span class="kt">BBSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+      <span class="n">session</span><span class="o">.</span><span class="nf">send</span><span class="p">(</span><span class="s">"I'm glad to see u back"</span><span class="p">)</span>
+      <span class="n">session</span><span class="o">.</span><span class="nf">promptText</span><span class="p">(</span><span class="s">"How are you today?"</span><span class="p">)</span>
+    <span class="p">},{(</span><span class="nv">session</span> <span class="p">:</span> <span class="kt">BBSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+      <span class="n">session</span><span class="o">.</span><span class="nf">saveUserData</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="n">session</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"mood"</span><span class="p">)</span><span class="o">.</span><span class="nf">endDialog</span><span class="p">()</span>
+    <span class="p">}])</span>
+</code></pre>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/mb2dev/BarnaBot/tree/master" target="_blank" rel="external">ESGI</a>. All rights reserved. (Last updated: 2017-02-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

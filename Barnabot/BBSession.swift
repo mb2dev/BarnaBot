@@ -72,7 +72,7 @@ class BBSession {
         if self.sharedUserData {
             let defaults = UserDefaults.standard
             if let data = defaults.dictionary(forKey: BBSession.identifier) {
-                userData = data as! [String: Any]
+                userData = data
             } else {
                 userData = [String: Any]()
             }
@@ -86,9 +86,11 @@ class BBSession {
      
         Invokes by default the dialog registered at the path **"/"**.
     */
-    func beginConversation() -> BBSession {
+    func beginConversation() -> Void {
         //print("beginConversation")
-        return self.state == .running ? self : beginDialog(path: "/")
+        if self.state != .running {
+            _ = beginDialog(path: "/")
+        }
     }
     
     /**
@@ -115,7 +117,7 @@ class BBSession {
     
     private func safeBegin(_ dialog : BBDialog){
         if(dialog != dialogStack.last){
-            self.beginDialog(dialog)
+            _ = self.beginDialog(dialog)
         }
     }
     
@@ -158,7 +160,7 @@ class BBSession {
         Call for the previous registered dialog.
     */
     func endDialog() -> BBSession {
-        _dialogStack.pop()
+        _ = _dialogStack.pop()
         if(self.state != .pending){
             return  self.resume()
         }
@@ -176,7 +178,7 @@ class BBSession {
             if let next = dialog.next {
                 next(self)
             } else {
-                self.endDialog()
+                _ = self.endDialog()
             }
         }
         return self
@@ -248,7 +250,7 @@ class BBSession {
     */
     func promptText(_ msg: String) -> Void {
         waiting_for_uinput = true
-        send(msg)
+        _ = send(msg)
     }
     
     /**
@@ -273,7 +275,7 @@ class BBSession {
         for item in list {
             msg_to_send.append("\(item)")
         }
-        send(msg_to_send)
+        _ = send(msg_to_send)
     }
     
     /**
@@ -288,7 +290,7 @@ class BBSession {
             print("on passe ici")
             LuisManager.sharedIntances.RequestLuis(msg: msg){ responce in
                 print("callback", responce.description)
-                self.beginDialog(path: responce.topScoring.intent)
+                _ = self.beginDialog(path: responce.topScoring.intent)
             }
         }else{
             // ATTENTION à ne pas relancer un dialog déjà en cours
@@ -306,7 +308,7 @@ class BBSession {
         
         waiting_for_uinput = false
         self.result = msg
-        self.resume()
+        _ = self.resume()
     }
     
     /**
