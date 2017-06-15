@@ -1,63 +1,46 @@
 [![Build Status](https://travis-ci.org/mb2dev/BarnaBot.svg?branch=master)](https://travis-ci.org/mb2dev/BarnaBot)
 # BarnaBot
 
+A local bot written in Swift for awesome user interactions!  
+Inspired by the [Microsoft Bot Framework](https://dev.botframework.com)
+
+### Simple declaration
 ```swift
-class ChatViewController: JSQMessagesViewController, BBSessionDelegate {
+    var botBuilder = BBBuilder("Barnabot")
+    var botSession = BBSession.sharedInstance
+    botSession.delegate = self
 
-	…
-	let botBuilder : BBBuilder = BBBuilder("Barnabot")
-       let botSession : BBSession = BBSession.sharedInstance
+    botBuilder
+        .dialog(path: "/", [{(session : BBSession) -> Void in
+            if let name = session.getUserData("name") {
+                session.next()
+            } else {
+                session.beginDialog("/profile")
+            }
+        },
+        {(session : BBSession) -> Void in
+            if let name = session.getUserData("name") {
+                session.send("Hello \(name)!")
+            }
+            session.endDialog()
+        }])
+        .dialog(path "/profile", [{(session : BBSession) -> Void in
+            session.promptText("What's your name?")
+        },{(session : BBSession) -> Void in
+            session.saveUserData(value: session.result, forKey: "name").endDialog()
+        }])
 
-	func send(_ msg: String) {
-        	print("send from BBSessionDelegate")
-        	let message = JSQMessage(senderId: botBuilder.botName, senderDisplayName: 	botBuilder.botName, date: Date.init(), text: msg as String!)
-        	self.messages.append(message!)
-        	self.finishSendingMessage(animated: true)
-    	}
+    botSession.beginConversation()
+```
 
-	// TODO inutile
-       func receive(_ msg : String) {
-       		botSession.receive(msg)
-    	}
-
-	override func viewDidLoad() {
-	…
-	botBuilder
-            .dialog(path: "/", dialog: BBDialog(waterfall: [{(session : BBSession, next : BBDialog?) -> Void in
-                if let name = session.userData["name"] {
-                    if let _next = next {
-                        _next.next(session, nil)
-                    }
-                } else {
-                    session.beginDialog(path: "/profile")
-                }
-                },
-                {(session : BBSession, next : BBDialog?) -> Void in
-                    if let name = session.userData["name"] {
-                        //session.send(format: "Hello %s!", args: name as AnyObject)
-                        session.send("Hello \(name)!")
-                    }
-                }]))
-            .dialog(path: "/profile", dialog : BBDialog(waterfall: [{(session : BBSession, next : BBDialog?) -> Void in
-                
-                print("/profile dialog")
-                session.promptText("Hi! What is your name?")
-                
-                },{(session : BBSession, next : BBDialog?) -> Void in
-                    
-                    session.userData.updateValue(session.result, forKey: "name")
-                    session.endDialog()
-                    
-                }]))
-        
-        botSession.botBuilder = botBuilder
-        botSession.delegate = self
-	…
-	}//viewDidLoad
-
-	override func viewDidAppear(_ animated: Bool) {
-        	botSession.beginConversation()
-    	}
-
-}
+### Intents support
+```swift
+  botBuilder
+    .matches("^help$", priority: 0, redir: "/help")
+    .matches("^bonjour", priority: 0, [{(session : BBSession) -> Void in
+      session.send("I'm glad to see u back")
+      session.promptText("How are you today?")
+    },{(session : BBSession) -> Void in
+      session.saveUserData(value: session.result, forKey: "mood").endDialog()
+    }])
 ```
